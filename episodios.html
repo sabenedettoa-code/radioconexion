@@ -1,186 +1,67 @@
 <!DOCTYPE html>
 <html lang="es-419">
 <head>
+    <link rel="icon" type="image/png" href="https://www.dropbox.com/scl/fi/7h2pubomnn102d1rap4dr/Sin-Texto-versi-n-3D.png?rlkey=nd66shyykgea25m8c6sl2pp5d&st=dg874wjl&raw=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>Episodios | Radio Conexión</title>
     
-    <!-- Carga Segura y Directa de tus Fuentes (Inter y tu tipografía Unica One) -->
+    <!-- LOGO EN LA PESTAÑA (FAVICON) -->
+    <link rel="icon" type="image/png" href="https://www.dropbox.com/scl/fi/7h2pubomnn102d1rap4dr/Sin-Texto-versi-n-3D.png?rlkey=nd66shyykgea25m8c6sl2pp5d&st=dg874wjl&raw=1">
+    
+    <!-- Carga de Fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unica+One&display=swap" rel="stylesheet">
 
-    <!-- Estilos CSS Base Unificados -->
     <style>
-        /* Reset y Variables */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f5f7f8;
-            color: #1c1c1c;
-            line-height: 1.6;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.3s ease;
-        }
-
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Títulos en Negrita y con el Color Dorado Corporativo (#c77f0d) */
-        h1, h2, h3, .brand-logo span {
-            font-family: 'Unica One', sans-serif;
-            color: #c77f0d;
-            font-weight: bold;
-        }
-
-        /* Cabecera / Navegación Estilo Liquid Glass Flotante Claro (iOS) */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: #f5f7f8; color: #1c1c1c; line-height: 1.6; }
+        a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
+        h1, h2, h3, .brand-logo span { font-family: 'Unica One', sans-serif; color: #c77f0d; font-weight: bold; }
+        
         header {
             background-color: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            position: sticky;
-            top: 15px;
-            z-index: 1000;
-            margin: 15px auto 25px auto;
-            max-width: 1240px;
-            width: calc(100% - 40px);
-            border-radius: 30px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            padding: 0 25px;
+            position: sticky; top: 15px; z-index: 1000;
+            margin: 15px auto 25px auto; max-width: 1240px; width: calc(100% - 40px);
+            border-radius: 30px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.4); padding: 0 25px;
         }
+        .nav-wrapper { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; }
+        .brand-logo { display: flex; align-items: center; gap: 10px; }
+        .brand-logo img { width: 40px; height: 40px; object-fit: cover; border-radius: 50%; background-color: #ffffff; border: 1px solid #e5a919; }
+        .brand-logo span { font-size: 24px; letter-spacing: 1px; }
+        nav ul { display: flex; list-style: none; gap: 24px; align-items: center; }
+        nav ul li a { color: #4a4a4a; font-size: 0.95rem; font-weight: 500; }
+        nav ul li a.active, nav ul li a:hover { color: #e5a919; font-weight: bold; }
 
-        .nav-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px 0;
-        }
-
-        .brand-logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* Logo Redondeado Perfecto */
-        .brand-logo img {
-            width: 40px;
-            height: 40px;
-            object-fit: cover;
-            border-radius: 50%;
-            background-color: #ffffff;
-            border: 1px solid #e5a919;
-        }
-
-        .brand-logo span {
-            font-size: 24px;
-            letter-spacing: 1px;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 24px;
-            align-items: center;
-        }
-
-        nav ul li a {
-            color: #4a4a4a;
-            font-size: 0.95rem;
-            font-weight: 500;
-        }
-
-        nav ul li a.active, nav ul li a:hover {
-            color: #e5a919;
-            font-weight: bold;
-        }
-
-        /* Contenido Principal */
-        main {
-            padding: 20px 0 40px 0;
-        }
-
-        /* Encabezado de la Sección (Caja con fondo blanco y estilo premium) */
+        main { padding: 20px 0 40px 0; }
         .page-title-section {
-            background: #ffffff;
-            border-radius: 12px;
-            padding: 40px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-            border: 1px solid rgba(207,216,220,0.4);
-            text-align: center;
-            max-width: 850px;
-            margin: 0 auto 60px auto;
+            background: #ffffff; border-radius: 12px; padding: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02); border: 1px solid rgba(207,216,220,0.4);
+            text-align: center; max-width: 850px; margin: 0 auto 60px auto;
         }
+        .page-title-section h1 { font-size: 34px; margin-bottom: 20px; }
+        .page-title-section p { color: #4a4a4a; font-size: 15px; max-width: 700px; margin: 0 auto; line-height: 1.8; }
+        .desc-link { color: #c77f0d; text-decoration: underline; font-weight: 600; }
+        .desc-link:hover { color: #b8820a; }
 
-        .page-title-section h1 {
-            font-size: 34px;
-            margin-bottom: 20px;
-        }
-
-        .page-title-section p {
-            color: #4a4a4a;
-            font-size: 15px;
-            max-width: 700px;
-            margin: 0 auto;
-            line-height: 1.8;
-        }
-
-        .desc-link {
-            color: #c77f0d;
-            text-decoration: underline;
-            font-weight: 600;
-        }
-
-        .desc-link:hover {
-            color: #b8820a;
-        }
-
-        /* Responsivo */
         @media (max-width: 768px) {
-            header {
-                top: 10px;
-                margin: 10px auto;
-                width: calc(100% - 20px);
-                padding: 15px;
-                border-radius: 20px;
-            }
-            .nav-wrapper {
-                flex-direction: column;
-                gap: 12px;
-                padding: 5px 0;
-            }
-            nav ul {
-                gap: 15px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            .page-title-section {
-                padding: 25px;
-            }
-            .page-title-section h1 {
-                font-size: 24pt;
-            }
+            header { top: 10px; margin: 10px auto; width: calc(100% - 20px); padding: 15px; border-radius: 20px; }
+            .nav-wrapper { flex-direction: column; gap: 12px; padding: 5px 0; }
+            nav ul { gap: 15px; flex-wrap: wrap; justify-content: center; }
+            .page-title-section { padding: 25px; }
+            .page-title-section h1 { font-size: 24pt; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Cabecera / Navegación Principal Estilo Cápsula Glassmorphism -->
     <header>
         <div class="nav-wrapper">
             <div class="brand-logo">
@@ -197,16 +78,13 @@
         </div>
     </header>
 
-    <!-- Contenido Principal -->
     <main class="container">
-        
         <div class="page-title-section">
             <h1>Episodios</h1>
             <p>Disfruta de nuestro catálogo de contenidos sonoros grabados en alta definición.<br><br>
-               Para escuchar todos los episodios, <a href="index.html#subscription-form" class="desc-link">suscríbete</a> y tendrás acceso a la carpeta. Podrás escuchar desde el primero hasta el más reciente.
+               Para escuchar todos los episodios, <a href="index.html#subscription-form" class="desc-link">suscríbete</a> y tendrás acceso a la carpeta con todos los episodios; desde el primero hasta el más reciente.
             </p>
         </div>
-
     </main>
 
 </body>

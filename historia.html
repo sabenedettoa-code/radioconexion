@@ -1,215 +1,66 @@
 <!DOCTYPE html>
 <html lang="es-419">
 <head>
+    <link rel="icon" type="image/png" href="https://www.dropbox.com/scl/fi/7h2pubomnn102d1rap4dr/Sin-Texto-versi-n-3D.png?rlkey=nd66shyykgea25m8c6sl2pp5d&st=dg874wjl&raw=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>Historia | Radio Conexión</title>
     
-    <!-- Carga Segura y Directa de tus Fuentes (Inter y tu tipografía Unica One) -->
+    <!-- LOGO EN LA PESTAÑA (FAVICON) -->
+    <link rel="icon" type="image/png" href="https://www.dropbox.com/scl/fi/7h2pubomnn102d1rap4dr/Sin-Texto-versi-n-3D.png?rlkey=nd66shyykgea25m8c6sl2pp5d&st=dg874wjl&raw=1">
+    
+    <!-- Carga de Fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unica+One&display=swap" rel="stylesheet">
 
-    <!-- Estilos CSS Base Unificados -->
     <style>
-        /* Reset y Variables */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f5f7f8;
-            color: #1c1c1c;
-            line-height: 1.6;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.3s ease;
-        }
-
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Títulos en Negrita y con el Color Dorado Corporativo (#c77f0d) */
-        h1, h2, h3, .brand-logo span {
-            font-family: 'Unica One', sans-serif;
-            color: #c77f0d;
-            font-weight: bold;
-        }
-
-        /* Cabecera / Navegación Estilo Liquid Glass Flotante Claro (iOS) */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: #f5f7f8; color: #1c1c1c; line-height: 1.6; }
+        a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
+        h1, h2, h3, .brand-logo span { font-family: 'Unica One', sans-serif; color: #c77f0d; font-weight: bold; }
+        
         header {
-            background-color: rgba(255, 255, 255, 0.7); /* Base blanca traslúcida clara */
-            backdrop-filter: blur(20px); /* Desenfoque intenso estilo Apple */
+            background-color: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            position: sticky;
-            top: 15px; /* Separación del techo para efecto flotante */
-            z-index: 1000;
-            margin: 15px auto 25px auto;
-            max-width: 1240px;
-            width: calc(100% - 40px);
-            border-radius: 30px; /* Bordes altamente redondeados estilo cápsula */
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06); /* Sombra suave suspendida */
-            border: 1px solid rgba(255, 255, 255, 0.4); /* Brillo de borde */
-            padding: 0 25px;
+            position: sticky; top: 15px; z-index: 1000;
+            margin: 15px auto 25px auto; max-width: 1240px; width: calc(100% - 40px);
+            border-radius: 30px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.4); padding: 0 25px;
         }
+        .nav-wrapper { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; }
+        .brand-logo { display: flex; align-items: center; gap: 10px; }
+        .brand-logo img { width: 40px; height: 40px; object-fit: cover; border-radius: 50%; background-color: #ffffff; border: 1px solid #e5a919; }
+        .brand-logo span { font-size: 24px; letter-spacing: 1px; }
+        nav ul { display: flex; list-style: none; gap: 24px; align-items: center; }
+        nav ul li a { color: #4a4a4a; font-size: 0.95rem; font-weight: 500; }
+        nav ul li a.active, nav ul li a:hover { color: #e5a919; font-weight: bold; }
 
-        .nav-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px 0;
+        main { padding: 20px 0 60px 0; }
+        .story-card {
+            background: #ffffff; border-radius: 12px; padding: 45px; max-width: 850px; margin: 0 auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02); border: 1px solid rgba(207,216,220,0.4);
         }
+        .story-card h1 { font-size: 34px; margin-bottom: 25px; text-align: center; }
+        .story-content p { font-size: 15.5px; color: #333333; line-height: 1.8; margin-bottom: 20px; text-align: justify; }
+        .story-content p:last-child { margin-bottom: 0; }
 
-        .brand-logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* Logo Redondeado Perfecto */
-        .brand-logo img {
-            width: 40px;
-            height: 40px;
-            object-fit: cover;
-            border-radius: 50%;
-            background-color: #ffffff;
-            border: 1px solid #e5a919;
-        }
-
-        .brand-logo span {
-            font-size: 24px;
-            letter-spacing: 1px;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 24px;
-            align-items: center;
-        }
-
-        nav ul li a {
-            color: #4a4a4a; /* Texto oscuro para legibilidad */
-            font-size: 0.95rem;
-            font-weight: 500;
-        }
-
-        nav ul li a.active, nav ul li a:hover {
-            color: #e5a919;
-            font-weight: bold;
-        }
-
-        /* Contenido Principal */
-        main {
-            padding: 20px 0 40px 0;
-        }
-
-        /* Cajas contenedoras con el mismo estilo premium */
-        .history-section, .founder-section {
-            background: #ffffff;
-            border-radius: 12px;
-            padding: 40px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-            border: 1px solid rgba(207,216,220,0.4);
-            max-width: 850px;
-            margin: 0 auto 40px auto;
-        }
-
-        .history-section h1, .founder-section h2 {
-            font-size: 34px;
-            margin-bottom: 25px;
-            text-align: center;
-        }
-
-        .history-content p, .founder-content p {
-            color: #4a4a4a;
-            font-size: 15px;
-            margin-bottom: 20px;
-            text-align: justify;
-        }
-
-        /* Bloque destacado para frase inspiradora o misión */
-        .highlight-quote {
-            border-left: 4px solid #e5a919;
-            padding-left: 20px;
-            margin: 30px 0;
-            font-style: italic;
-            color: #1c1c1c;
-            font-size: 16px;
-            background-color: #f5f7f8;
-            padding-top: 15px;
-            padding-bottom: 15px;
-            border-radius: 0 8px 8px 0;
-        }
-
-        /* Estilos de la Firma del Propietario */
-        .signature-block {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #f5f7f8;
-            text-align: right;
-        }
-
-        .signature-name {
-            font-family: 'Unica One', sans-serif;
-            color: #c77f0d;
-            font-size: 22px;
-            font-weight: bold;
-            margin-bottom: 2px;
-        }
-
-        .signature-title {
-            color: #8e8e8e;
-            font-size: 14px;
-            font-weight: 500;
-            line-height: 1.3;
-        }
-
-        /* Responsivo */
         @media (max-width: 768px) {
-            header {
-                top: 10px;
-                margin: 10px auto;
-                width: calc(100% - 20px);
-                padding: 15px;
-                border-radius: 20px;
-            }
-            .nav-wrapper {
-                flex-direction: column;
-                gap: 12px;
-                padding: 5px 0;
-            }
-            nav ul {
-                gap: 15px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            .history-section, .founder-section {
-                padding: 25px;
-            }
-            .history-section h1, .founder-section h2 {
-                font-size: 24pt;
-            }
-            .signature-block {
-                text-align: center;
-            }
+            header { top: 10px; margin: 10px auto; width: calc(100% - 20px); padding: 15px; border-radius: 20px; }
+            .nav-wrapper { flex-direction: column; gap: 12px; padding: 5px 0; }
+            nav ul { gap: 15px; flex-wrap: wrap; justify-content: center; }
+            .story-card { padding: 25px 20px; }
+            .story-card h1 { font-size: 24pt; }
+            .story-content p { text-align: left; font-size: 14.5px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Cabecera / Navegación Principal Estilo Cápsula Glassmorphism -->
     <header>
         <div class="nav-wrapper">
             <div class="brand-logo">
@@ -226,60 +77,15 @@
         </div>
     </header>
 
-    <!-- Contenido Principal -->
     <main class="container">
-        
-        <!-- SECCIÓN 1: PROPÓSITO GENERAL -->
-        <section class="history-section">
+        <article class="story-card">
             <h1>Nuestra Historia</h1>
-            
-            <div class="history-content">
-                <p>
-                    Radio Conexión nació con un propósito claro: ser un faro de luz en medio de la saturación informativa actual. Convencidos de que el mundo está lleno de acciones inspiradoras que merecen ser contadas, decidimos crear un espacio dedicado exclusivamente al periodismo positivo.
-                </p>
-
-                <div class="highlight-quote">
-                    "Conectados con tus sentidos: Queremos dejar de lado la oscuridad del mundo para darle luz a su lado bueno."
-                </div>
-
-                <p>
-                    Desde nuestros inicios, nos hemos enfocado en rescatar historias de superación, avances que mejoran vidas y proyectos comunitarios que transforman realidades. No se trata de ignorar los problemas, sino de enfocar la mirada en las soluciones y en la resiliencia humana.
-                </p>
+            <div class="story-content">
+                <p>Radio Conexión nació hace 6 años, en un momento en que el mundo parecía saturado de malas noticias, incertidumbre y negatividad. Con la firme convicción de que los medios de comunicación tienen la responsabilidad y el poder de construir realidades más amables, decidimos abrir un espacio dedicado exclusivamente al periodismo positivo.</p>
+                <p>Desde nuestros inicios, nos propusimos dejar de lado la oscuridad mediática para encender una luz sobre el lado bueno del mundo. Nos enfocamos en dar voz a quienes están transformando su entorno, en difundir proyectos de impacto social, historias de superación, avances científicos con rostro humano y todo contenido que inspire esperanza y despierte la empatía de nuestra audiencia.</p>
+                <p>A lo largo de esta trayectoria, hemos crecido de la mano de oyentes que, al igual que nosotros, buscaban un refugio sonoro y una fuente de inspiración diaria. Hoy en día, Radio Conexión es más que una emisora; es una comunidad vibrante de personas conectadas a través de sus sentidos con el optimismo, el arte, la buena música y el deseo colectivo de aportar al bienestar común. Seguimos adelante, convencidos de que contar lo bueno también es hacer historia.</p>
             </div>
-        </section>
-
-        <!-- SECCIÓN 2: RELATO EN PRIMERA PERSONA DEL FUNDADOR -->
-        <section class="founder-section">
-            <h2>Palabras de su fundador</h2>
-            
-            <div class="founder-content">
-                <p>
-                    Marzo es un mes muy especial para la radio, ¿por qué?, porque en este mes comencé a grabar los primeros episodios de Radio Conexión. 
-                </p>
-                <p>
-                    Todo inició en plena cuarentena, durante la pandemia (año 2020), cuando un día como cualquiera, prendo mi computador, abro la grabadora de voz y me doy cuenta que puedo poner música y se escuchaba "bien". Primero, compartí los primeros episodios a mi familia más cercana. Pero habían algunos problemas; primero, mientras ponía las canciones se escuchaba todo el ruido de fondo, lo cual era bastante desagradable, más aún cuando estabamos todos encerrados. 
-                </p>
-                <p>
-                    Resulta que una persona muy generosa me recomendó el programa "Audacity" y solucionó ese problema. Dejé de usar la grabadora y comencé a usar Audacity para poder colocar música de mucha, pero mucha mejor calidad y sin ruido externo de fondo. Además, evolucionamos en cuanto a música de fondo, después de varios meses, descubrí cómo hacerlo, y desde ese día los episodios son mucho más entretenidos y alegres. 
-                </p>
-                <p>
-                    La siguiente evolución fue el abrir la página web, para que puedas estar más conectado junto a tu radio. Modificaciones en el logo y lema de Radio Conexión. Eso y más cambios, ha tenido la radio. Me enorgullece un montón que Radio Conexión ha perdurado durante seis años y ha evolucionado un montón.
-                </p>
-                <p>
-                    Gracias querida audiencia por ser parte de no solo una radio, sino una gran comunidad. Gracias por escuchar los episodios de principio a fin.
-                </p>
-                
-                <!-- Bloque de Firma Final Corporativa -->
-                <div class="signature-block">
-                    <div class="signature-name">Santiago Benedetto Abarca
-                    <div class="signature-title">
-                        Locutor y Propietario de<br>
-                        <strong>Radio Conexión - Conectados Con Tus Sentidos</strong>
-                    </div>
-                </div>
-            </div>
-        </section>
-
+        </article>
     </main>
 
 </body>

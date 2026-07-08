@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es-419" itemscope="" itemtype="http://schema.org/WebPage">
 <head>
+    <link rel="icon" type="image/png" href="https://www.dropbox.com/scl/fi/7h2pubomnn102d1rap4dr/Sin-Texto-versi-n-3D.png?rlkey=nd66shyykgea25m8c6sl2pp5d&st=dg874wjl&raw=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -463,18 +464,64 @@
             <div class="subscription-box">
                 <h2>Suscríbete a Radio Conexión</h2>
                 <p>Sé el primero en enterarte de nuevos episodios, anuncios oficiales, noticias que inspiran y pide tus canciones favoritas.</p>
-                <form class="form-group">
+              <form class="form-group" id="radio-subscription-form">
                     <div class="form-row">
-                        <input type="text" placeholder="Nombre" required style="width: 50%;">
-                        <input type="text" placeholder="Apellido" required style="width: 50%;">
+                        <input type="text" name="nombre" placeholder="Nombre" required style="width: 50%;">
+                        <input type="text" name="apellido" placeholder="Apellido" required style="width: 50%;">
                     </div>
-                    <input type="email" placeholder="Correo Electrónico" required>
+                    <input type="email" name="email" placeholder="Correo Electrónico" required>
                     <div class="privacy-row">
                         <input type="checkbox" required id="privacy">
                         <label for="privacy">Acepto los <a href="https://docs.google.com/document/d/1lDV4lXvJRvKY-jV-HnYbBzAtuWayx_yOnCAoZhyC7Lw/edit?usp=sharing" target="_blank" class="privacy-link">Términos y Condiciones de Uso</a> de Radio Conexión y consiento el tratamiento de mis datos bajo la Ley 19.628.</label>
                     </div>
-                    <button type="submit" class="btn-custom" style="border: none; cursor: pointer; width: 100%;">Unirme ahora</button>
+                    <button type="submit" class="btn-custom" id="submit-btn" style="border: none; cursor: pointer; width: 100%;">Suscribirme</button>
+                    
+                    <!-- MENSAJE DE ÉXITO OCULTO POR DEFECTO -->
+                    <div id="success-message" style="display: none; margin-top: 15px; padding: 12px; background-color: #e6f4ea; color: #137333; border-radius: 8px; font-weight: 600; text-align: center; border: 1px solid #ceead6; font-family: 'Inter', sans-serif;">
+                        ¡Gracias por conectarte! Te has suscrito correctamente. 
+                        <p></p>
+                       📨 Te hemos enviado un correo de bienvenida con toda la información que tienes que saber.
+                    </div>
                 </form>
+
+                <!-- MOTOR DE ENVÍO ASÍNCRONO -->
+                <script>
+                    document.getElementById('radio-subscription-form').addEventListener('submit', function(e) {
+                        e.preventDefault(); // Evita que la página viaje a la pantalla blanca
+                        
+                        const form = this;
+                        const button = document.getElementById('submit-btn');
+                        const successMessage = document.getElementById('success-message');
+                        const formData = new FormData(form);
+                        
+                        // Cambia el estado del botón mientras procesa
+                        button.disabled = true;
+                        button.innerText = 'Procesando...';
+                        
+                        // Envía los datos de fondo a tu Google Apps Script
+                        fetch('https://script.google.com/macros/s/AKfycbxejh-XoI2VurFXIaEUCv1GxK5Ssm7TUw-g9rZ5RZ8bgOeQS0UGsouFsOTCnjodzjen/exec', {
+                            method: 'POST',
+                            body: formData,
+                            mode: 'no-cors' // Permite la comunicación limpia entre servidores cruzados
+                        })
+                        .then(() => {
+                            // Oculta los campos del formulario de forma limpia
+                            form.querySelector('.form-row').style.display = 'none';
+                            form.querySelector('input[type="email"]').style.display = 'none';
+                            form.querySelector('.privacy-row').style.display = 'none';
+                            button.style.display = 'none';
+                            
+                            // Muestra el mensaje de éxito verde brillante
+                            successMessage.style.display = 'block';
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            button.disabled = false;
+                            button.innerText = 'Suscribirme';
+                            alert('Hubo un problema con la suscripción. Por favor, inténtalo de nuevo.');
+                        });
+                    });
+                </script>
             </div>
         </section>
 
