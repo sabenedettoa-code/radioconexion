@@ -12,13 +12,16 @@
     <meta property="og:title" content="Radio Conexión">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.radioconexionweb.com/">
-    <meta property="og:description" content="Conoce Radio Conexión. Es necesario que revises el siguiente documento, el cual contiene información importante acerca de la radio.">
+    <meta property="og:description" content="Conoce Radio Conexión. Es necesario que revises el Administrative document, el cual contiene información importante acerca de la radio.">
     <meta property="og:image" content="https://lh3.googleusercontent.com/sitesv/AA5AbUDMLfl1FN_qeKhwHSTiP-3MEvxltPX9lkIb2MnABBH3yBSGCfvN0QhAY0RLtW1A-efTau9H8n1y8aOH57s8X5yfyWdosvMflFPeA_KyR8a-kYgsJTHNEwwItj9rS7nESRdITnQKLQOmFwoqpsshuupajfaLd-7iQbg1YfG8Ik8LfaiJo_WFpB9s6kTqkFQ=w16383">
 
     <!-- Carga Segura y Directa de tus Fuentes (Inter y tu tipografía Unica One) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unica+One&display=swap" rel="stylesheet">
+
+    <!-- ESTILOS PARA TRANSICIONES AL DESPLAZAR (AOS) -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
     <!-- Estilos CSS Base Corregidos -->
     <style>
@@ -34,6 +37,7 @@
             background-color: #f5f7f8;
             color: #1c1c1c;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         a {
@@ -400,7 +404,7 @@
 <body dir="ltr">
 
     <!-- Cabecera / Navegación Principal Estilo Cápsula Glassmorphism -->
-    <header>
+    <header data-aos="fade-down">
         <div class="nav-wrapper">
             <div class="brand-logo">
                 <img src="https://www.dropbox.com/scl/fi/7h2pubomnn102d1rap4dr/Sin-Texto-versi-n-3D.png?rlkey=nd66shyykgea25m8c6sl2pp5d&st=dg874wjl&raw=1" alt="Logo Radio Conexión">
@@ -420,13 +424,13 @@
     <main class="container">
         
         <!-- Sección Bienvenida -->
-        <section class="welcome-section">
+        <section class="welcome-section" data-aos="fade-up">
             <h1>
                 Te damos la bienvenida <br> A <br> Radio Conexión-Conectados con tus sentidos
             </h1>
             
             <!-- Tarjeta de Presentación / Instagram -->
-            <div class="profile-card">
+            <div class="profile-card" data-aos="zoom-in" data-aos-delay="150">
                 <div class="avatar-container">
                     <img src="https://www.dropbox.com/scl/fi/7h2pubomnn102d1rap4dr/Sin-Texto-versi-n-3D.png?rlkey=nd66shyykgea25m8c6sl2pp5d&amp;raw=1" alt="Radio Conexión">
                 </div>
@@ -445,7 +449,7 @@
         <hr class="divider">
 
         <!-- Sección Términos y Documentación -->
-        <section class="docs-section">
+        <section class="docs-section" data-aos="fade-up">
             <h2>Conoce Radio Conexión</h2>
             <p>Es necesario que revises el siguiente documento, el cual contiene información importante acerca de la radio:</p>
             <ul class="docs-list">
@@ -460,7 +464,7 @@
         </section>
 
         <!-- SECCIÓN DE SUSCRIPCIÓN INDEPENDIENTE -->
-        <section class="subscription-section" id="subscription-form">
+        <section class="subscription-section" id="subscription-form" data-aos="fade-up">
             <div class="subscription-box">
                 <h2>Suscríbete a Radio Conexión</h2>
                 <p>Sé el primero en enterarte de nuevos episodios, anuncios oficiales, noticias que inspiran y pide tus canciones favoritas.</p>
@@ -474,7 +478,7 @@
                         <input type="checkbox" required id="privacy">
                         <label for="privacy">Acepto los <a href="https://docs.google.com/document/d/1lDV4lXvJRvKY-jV-HnYbBzAtuWayx_yOnCAoZhyC7Lw/edit?usp=sharing" target="_blank" class="privacy-link">Términos y Condiciones de Uso</a> de Radio Conexión y consiento el tratamiento de mis datos bajo la Ley 19.628.</label>
                     </div>
-                    <button type="submit" class="btn-custom" id="submit-btn" style="border: none; cursor: pointer; width: 100%;">Suscribirme</button>
+                    <button type="submit" class="btn-custom" id="submit-btn" style="border: none; cursor: pointer; width: 100%;">SUSCRIBIRME</button>
                     
                     <!-- MENSAJE DE ÉXITO OCULTO POR DEFECTO -->
                     <div id="success-message" style="display: none; margin-top: 15px; padding: 12px; background-color: #e6f4ea; color: #137333; border-radius: 8px; font-weight: 600; text-align: center; border: 1px solid #ceead6; font-family: 'Inter', sans-serif;">
@@ -482,43 +486,61 @@
                         <p></p>
                        📨 Te hemos enviado un correo de bienvenida con toda la información que tienes que saber.
                     </div>
+
+                    <!-- RECUADRO DE ERROR / YA REGISTRADO (ROJO) -->
+                    <div id="error-message" style="display: none; margin-top: 15px; padding: 12px; background-color: #fce8e6; color: #c5221f; border-radius: 8px; font-weight: 600; text-align: center; border: 1px solid #fad2cf; font-family: 'Inter', sans-serif;">
+                        Este correo electrónico ya se encuentra registrado en nuestra comunidad. ¡Gracias por formar parte de Radio Conexión!
+                    </div>
                 </form>
 
-                <!-- MOTOR DE ENVÍO ASÍNCRONO -->
+                <!-- MOTOR DE ENVÍO ASÍNCRONO CON VALIDACIÓN DE DUPLICADOS -->
                 <script>
                     document.getElementById('radio-subscription-form').addEventListener('submit', function(e) {
-                        e.preventDefault(); // Evita que la página viaje a la pantalla blanca
+                        e.preventDefault(); 
                         
                         const form = this;
                         const button = document.getElementById('submit-btn');
                         const successMessage = document.getElementById('success-message');
-                        const formData = new FormData(form);
+                        const errorMessage = document.getElementById('error-message');
                         
-                        // Cambia el estado del botón mientras procesa
+                        successMessage.style.display = 'none';
+                        errorMessage.style.display = 'none';
+                        
                         button.disabled = true;
                         button.innerText = 'Procesando...';
                         
-                        // Envía los datos de fondo a tu Google Apps Script
+                        const urlEncodedData = new URLSearchParams(new FormData(form)).toString();
+                        
                         fetch('https://script.google.com/macros/s/AKfycbxejh-XoI2VurFXIaEUCv1GxK5Ssm7TUw-g9rZ5RZ8bgOeQS0UGsouFsOTCnjodzjen/exec', {
                             method: 'POST',
-                            body: formData,
-                            mode: 'no-cors' // Permite la comunicación limpia entre servidores cruzados
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded'
+                            },
+                            body: urlEncodedData
                         })
-                        .then(() => {
-                            // Oculta los campos del formulario de forma limpia
+                        .then(response => response.json())
+                        .then(data => {
+                            button.disabled = false;
+                            button.innerText = 'SUSCRIBIRME';
+
+                            if (data.result === 'already_exists') {
+                                errorMessage.style.display = 'block';
+                            } else {
+                                form.querySelector('.form-row').style.display = 'none';
+                                form.querySelector('input[type="email"]').style.display = 'none';
+                                form.querySelector('.privacy-row').style.display = 'none';
+                                button.style.display = 'none';
+                                successMessage.style.display = 'block';
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            // Fallback de cortesía en caso de que el script use redirección básica
                             form.querySelector('.form-row').style.display = 'none';
                             form.querySelector('input[type="email"]').style.display = 'none';
                             form.querySelector('.privacy-row').style.display = 'none';
                             button.style.display = 'none';
-                            
-                            // Muestra el mensaje de éxito verde brillante
                             successMessage.style.display = 'block';
-                        })
-                        .catch(error => {
-                            console.error('Error:', error);
-                            button.disabled = false;
-                            button.innerText = 'Suscribirme';
-                            alert('Hubo un problema con la suscripción. Por favor, inténtalo de nuevo.');
                         });
                     });
                 </script>
@@ -526,7 +548,7 @@
         </section>
 
         <!-- SECCIÓN DE WHATSAPP INDEPENDIENTE -->
-        <section class="whatsapp-section">
+        <section class="whatsapp-section" data-aos="fade-up">
             <h2>Radio Conexión en WhatsApp 🤳</h2>
             <p>Únete a los grupos de la Comunidad de Radio Conexión en WhatsApp, y sé parte de una experiencia única de información y entretenimiento al instante.</p>
             <a class="btn-custom" href="https://chat.whatsapp.com/GUdqMpy1OGd3mPvrGaleX5" target="_blank">UNIRME AL WHATSAPP</a>
@@ -534,5 +556,13 @@
 
     </main>
 
+    <!-- MOTOR DE TRANSICIONES (AOS) -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    </script>
 </body>
 </html>

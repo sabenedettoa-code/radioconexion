@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="es-419">
 <head>
-    <link rel="icon" type="image/png" href="https://www.dropbox.com/scl/fi/7h2pubomnn102d1rap4dr/Sin-Texto-versi-n-3D.png?rlkey=nd66shyykgea25m8c6sl2pp5d&st=dg874wjl&raw=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,9 +15,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unica+One&display=swap" rel="stylesheet">
 
+    <!-- ESTILOS PARA TRANSICIONES AL DESPLAZAR (AOS) -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background-color: #f5f7f8; color: #1c1c1c; line-height: 1.6; }
+        body { font-family: 'Inter', sans-serif; background-color: #f5f7f8; color: #1c1c1c; line-height: 1.6; overflow-x: hidden; }
         a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
         .container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
         h1, h2, h3, .brand-logo span { font-family: 'Unica One', sans-serif; color: #c77f0d; font-weight: bold; }
@@ -62,7 +64,7 @@
 </head>
 <body>
 
-    <header>
+    <header data-aos="fade-down">
         <div class="nav-wrapper">
             <div class="brand-logo">
                 <img src="https://www.dropbox.com/scl/fi/7h2pubomnn102d1rap4dr/Sin-Texto-versi-n-3D.png?rlkey=nd66shyykgea25m8c6sl2pp5d&st=dg874wjl&raw=1" alt="Logo Radio Conexión">
@@ -79,7 +81,7 @@
     </header>
 
     <main class="container">
-        <div class="page-title-section">
+        <div class="page-title-section" data-aos="zoom-in" data-aos-delay="150">
             <h1>Episodios</h1>
             <p>Disfruta de nuestro catálogo de contenidos sonoros grabados en alta definición.<br><br>
                Para escuchar todos los episodios, <a href="index.html#subscription-form" class="desc-link">suscríbete</a> y tendrás acceso a la carpeta con todos los episodios; desde el primero hasta el más reciente.
@@ -87,5 +89,13 @@
         </div>
     </main>
 
+    <!-- MOTOR DE TRANSICIONES (AOS) -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    </script>
 </body>
 </html>

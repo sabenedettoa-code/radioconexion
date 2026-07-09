@@ -7,10 +7,16 @@
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>Historia | Radio Conexión</title>
     
+    <!-- LOGO EN LA PESTAÑA (FAVICON) -->
+    <link rel="icon" type="image/png" href="https://www.dropbox.com/scl/fi/7h2pubomnn102d1rap4dr/Sin-Texto-versi-n-3D.png?rlkey=nd66shyykgea25m8c6sl2pp5d&st=dg874wjl&raw=1">
+
     <!-- Carga Segura y Directa de tus Fuentes (Inter y tu tipografía Unica One) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unica+One&display=swap" rel="stylesheet">
+
+    <!-- ESTILOS PARA TRANSICIONES AL DESPLAZAR (AOS) -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
     <!-- Estilos CSS Base Unificados -->
     <style>
@@ -26,6 +32,7 @@
             background-color: #f5f7f8;
             color: #1c1c1c;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         a {
@@ -210,7 +217,7 @@
 <body>
 
     <!-- Cabecera / Navegación Principal Estilo Cápsula Glassmorphism -->
-    <header>
+    <header data-aos="fade-down">
         <div class="nav-wrapper">
             <div class="brand-logo">
                 <img src="https://www.dropbox.com/scl/fi/7h2pubomnn102d1rap4dr/Sin-Texto-versi-n-3D.png?rlkey=nd66shyykgea25m8c6sl2pp5d&st=dg874wjl&raw=1" alt="Logo Radio Conexión">
@@ -230,7 +237,7 @@
     <main class="container">
         
         <!-- SECCIÓN 1: PROPÓSITO GENERAL -->
-        <section class="history-section">
+        <section class="history-section" data-aos="fade-up">
             <h1>Nuestra Historia</h1>
             
             <div class="history-content">
@@ -249,7 +256,7 @@
         </section>
 
         <!-- SECCIÓN 2: RELATO EN PRIMERA PERSONA DEL FUNDADOR -->
-        <section class="founder-section">
+        <section class="founder-section" data-aos="fade-up">
             <h2>Palabras de su fundador</h2>
             
             <div class="founder-content">
@@ -271,7 +278,7 @@
                 
                 <!-- Bloque de Firma Final Corporativa -->
                 <div class="signature-block">
-                    <div class="signature-name">Santiago Benedetto A.</div>
+                    <div class="signature-name">Santiago Benedetto Abarca</div>
                     <div class="signature-title">
                         Locutor y Propietario de<br>
                         <strong>Radio Conexión - Conectados Con Tus Sentidos</strong>
@@ -282,5 +289,13 @@
 
     </main>
 
+    <!-- MOTOR DE TRANSICIONES (AOS) -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    </script>
 </body>
 </html>
