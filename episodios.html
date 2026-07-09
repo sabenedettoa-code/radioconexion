@@ -64,7 +64,7 @@
 </head>
 <body>
 
-    <header data-aos="fade-down">
+    <header>
         <div class="nav-wrapper">
             <div class="brand-logo">
                 <img src="https://www.dropbox.com/scl/fi/7h2pubomnn102d1rap4dr/Sin-Texto-versi-n-3D.png?rlkey=nd66shyykgea25m8c6sl2pp5d&st=dg874wjl&raw=1" alt="Logo Radio Conexión">
@@ -80,22 +80,53 @@
         </div>
     </header>
 
+  </header>
+
     <main class="container">
+        <!-- CAJA DE EPISODIOS ACTUALIZADA CON REPRODUCTOR -->
         <div class="page-title-section" data-aos="zoom-in" data-aos-delay="150">
             <h1>Episodios</h1>
             <p>Disfruta de nuestro catálogo de contenidos sonoros grabados en alta definición.<br><br>
                Para escuchar todos los episodios, <a href="index.html#subscription-form" class="desc-link">suscríbete</a> y tendrás acceso a la carpeta con todos los episodios; desde el primero hasta el más reciente.
             </p>
+
+            <!-- 🌟 REPRODUCTOR EMBEBIDO DE SPOTIFY -->
+            <div style="margin-top: 35px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+            <!-- 🌟 TU REPRODUCTOR OFICIAL DE RADIO CONEXIÓN CON IDENTIDAD CORPORATIVA -->
+<div style="margin-top: 35px; border-radius: 16px; overflow: hidden; padding: 3px; background: #c77f0d; box-shadow: 0 8px 24px rgba(199, 127, 13, 0.25); transition: all 0.3s ease-out;" data-aos="zoom-in">
+    <iframe style="border-radius:12px; display: block;" 
+            src="https://open.spotify.com/embed/show/6CDimSvVahr4PZSiypB0vp?utm_source=generator&theme=0" 
+            width="100%" 
+            height="232" 
+            frameBorder="0" 
+            allowfullscreen="" 
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+            loading="lazy">
+    </iframe>
+</div>
         </div>
     </main>
 
-    <!-- MOTOR DE TRANSICIONES (AOS) -->
+    <!-- MOTOR DE TRANSICIONES (AOS) TOTALMENTE INTERACTIVO -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         AOS.init({
-            duration: 800,
-            once: true
+            duration: 900,
+            once: false,
+            easing: 'ease-out-back'
         });
     </script>
 </body>
 </html>
+
+    <!-- MOTOR DE TRANSICIONES CON EFECTO ELÁSTICO (RUBBER BAND) -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 900,         // Un toque más lento (0.9s) para que se aprecie la elasticidad
+            once: false,           // Se repite tanto al bajar como al subir
+            mirror: true,          // Permite que se vuelva a estirar si pasas de largo[cite: 3]
+            easing: 'ease-out-back' // 🌟 EL TRUCO: Hace que el elemento pase su posición final y regrese con un rebote elástico
+        });
+    </script>
+</body>

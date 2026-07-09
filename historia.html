@@ -217,7 +217,7 @@
 <body>
 
     <!-- Cabecera / Navegación Principal Estilo Cápsula Glassmorphism -->
-    <header data-aos="fade-down">
+    <header>
         <div class="nav-wrapper">
             <div class="brand-logo">
                 <img src="https://www.dropbox.com/scl/fi/7h2pubomnn102d1rap4dr/Sin-Texto-versi-n-3D.png?rlkey=nd66shyykgea25m8c6sl2pp5d&st=dg874wjl&raw=1" alt="Logo Radio Conexión">
@@ -289,13 +289,14 @@
 
     </main>
 
-    <!-- MOTOR DE TRANSICIONES (AOS) -->
+  <!-- MOTOR DE TRANSICIONES CON EFECTO ELÁSTICO (RUBBER BAND) -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         AOS.init({
-            duration: 800,
-            once: true
+            duration: 900,         // Un toque más lento (0.9s) para que se aprecie la elasticidad
+            once: false,           // Se repite tanto al bajar como al subir
+            mirror: true,          // Permite que se vuelva a estirar si pasas de largo[cite: 3]
+            easing: 'ease-out-back' // 🌟 EL TRUCO: Hace que el elemento pase su posición final y regrese con un rebote elástico
         });
     </script>
 </body>
-</html>
