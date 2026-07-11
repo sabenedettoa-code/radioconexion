@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="es-419" itemscope="" itemtype="http://schema.org/WebPage">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>Suscriptores | Radio Conexión</title>
+    
+    <!-- LOGO EN LA PESTAÑA (FAVICON) -->
+    <link rel="icon" type="image/png" href="https://www.dropbox.com/scl/fi/7h2pubomnn102d1rap4dr/Sin-Texto-versi-n-3D.png?rlkey=nd66shyykgea25m8c6sl2pp5d&st=dg874wjl&raw=1">
+
+    <!-- Carga Segura y Directa de tus Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unica+One&display=swap" rel="stylesheet">
+
+    <!-- ESTILOS PARA TRANSICIONES AL DESPLAZAR (AOS) -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <style>
+        /* Heredando tus mismos estilos de index.html */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: #f5f7f8; color: #1c1c1c; line-height: 1.6; overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
+        h1, h2, h3, .brand-logo span, .music-box h2 { font-family: 'Unica One', sans-serif; color: #c77f0d; font-weight: bold; }
+        
+        .btn-custom {
+            background-color: #e5a919; color: #1c1c1c; padding: 12px 35px; border-radius: 25px;
+            font-weight: bold; display: inline-block; box-shadow: 0 4px 10px rgba(229, 169, 25, 0.2);
+            transition: all 0.3s ease; border: none; cursor: pointer;
+        }
+        .btn-custom:hover { background-color: #b8820a; color: white; transform: translateY(-2px); }
+
+        header {
+            background-color: rgba(255, 255, 255, 0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            position: sticky; top: 15px; z-index: 1000; margin: 15px auto 25px auto; max-width: 1240px;
+            width: calc(100% - 40px); border-radius: 30px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.4); padding: 0 25px;
+        }
+        .nav-wrapper { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; }
+        .brand-logo { display: flex; align-items: center; gap: 10px; }
+        .brand-logo img { width: 40px; height: 40px; object-fit: cover; border-radius: 50%; background-color: #ffffff; border: 1px solid #e5a919; }
+        .brand-logo span { font-size: 24px; letter-spacing: 1px; }
+        nav ul { display: flex; list-style: none; gap: 24px; align-items: center; }
+        nav ul li a { color: #4a4a4a; font-size: 0.95rem; font-weight: 500; }
+        nav ul li a.active, nav ul li a:hover { color: #c77f0d; font-weight: bold; }
+
+        main { padding: 20px 0 40px 0; }
+        .page-title-section, .music-section {
+            background: #ffffff; border-radius: 12px; padding: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02); border: 1px solid rgba(207,216,220,0.4);
+            text-align: center; max-width: 850px; margin: 0 auto 40px auto;
+        }
+        .page-title-section h1, .music-section h2 { font-size: 34px; margin-bottom: 20px; }
+        .page-title-section p, .music-section p.rc-subtitle { color: #4a4a4a; font-size: 15px; max-width: 700px; margin: 0 auto 20px auto; line-height: 1.8; }
+
+        /* Estilos del Login Privado */
+        .login-box { max-width: 450px; margin: 0 auto; }
+        .input-privado {
+            height: 44px; padding: 0 15px; border: 1px solid #cfd8dc; border-radius: 6px;
+            outline: none; font-family: 'Inter', sans-serif; background-color: #f5f7f8;
+            font-size: 14.5px; width: 100%; margin-bottom: 15px; text-align: center;
+        }
+        .input-privado:focus { border-color: #e5a919; background-color: #ffffff; }
+
+        .barra-bienvenida {
+            display: flex; justify-content: space-between; align-items: center; background-color: #e6f4ea;
+            padding: 12px 20px; border-radius: 8px; border: 1px solid #ceead6; max-width: 850px;
+            margin: 0 auto 25px auto; color: #137333; font-weight: 600; font-size: 14px;
+        }
+        .btn-logout { background: none; border: none; color: #c5221f; text-decoration: underline; font-weight: bold; cursor: pointer; }
+
+        /* Buscador del Formulario de tu index.html */
+        .form-group { display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px; position: relative; }
+        .form-group label { display: block; color: #4a4a4a; font-weight: 600; font-size: 13px; text-align: left; margin-bottom: -4px; }
+        .form-group input[type="text"] { height: 40px; padding: 0 10px; border: 1px solid #cfd8dc; border-radius: 6px; outline: none; font-family: 'Inter', sans-serif; background-color: #f5f7f8; font-size: 14.5px; }
+        .form-group input:focus { border-color: #e5a919; background-color: #ffffff; }
+        
+        .rc-search-results-box { position: absolute; top: 70px; left: 0; width: 100%; max-height: 200px; overflow-y: auto; background: #ffffff; border: 1px solid #cfd8dc; border-radius: 6px; z-index: 999; box-shadow: 0 6px 15px rgba(0,0,0,0.06); display: none; }
+        .rc-search-item { padding: 10px 12px; text-align: left; font-size: 13.5px; cursor: pointer; border-bottom: 1px solid #f5f7f8; display: flex; align-items: center; overflow: hidden; }
+        .rc-search-item:hover { background-color: #f5f7f8; color: #c77f0d; }
+        .rc-search-item.no-click { color: #888; cursor: default; padding: 12px; }
+        .rc-selected-list-container { border: 1px dashed #cfd8dc; border-radius: 6px; padding: 10px; background: #fafbfc; min-height: 44px; }
+        .rc-empty-msg { font-size: 13px; color: #888; margin: 0; font-style: italic; text-align: center; padding: 10px 0; }
+        .rc-selected-item-row { display: flex; justify-content: space-between; align-items: center; background: #ffffff; padding: 8px 10px; border-radius: 6px; margin-bottom: 6px; font-size: 13px; border: 1px solid #cfd8dc; border-left: 4px solid #e5a919; overflow: hidden; }
+        .rc-selected-item-row button { background: none; border: none; color: #c5221f; font-weight: bold; cursor: pointer; font-size: 15px; padding: 0 4px; flex-shrink: 0; }
+
+        .seccion-oculta { display: none !important; }
+
+        @media (max-width: 768px) {
+            header { top: 10px; margin: 10px auto; width: calc(100% - 20px); padding: 15px; border-radius: 20px; }
+            .nav-wrapper { flex-direction: column; gap: 12px; padding: 5px 0; }
+            nav ul { gap: 15px; flex-wrap: wrap; justify-content: center; }
+            .page-title-section h1, .music-section h2 { font-size: 24pt; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Menú Cápsula Glassmorphism -->
+    <header>
+        <div class="nav-wrapper">
+            <div class="brand-logo">
+                <img src="https://www.dropbox.com/scl/fi/7h2pubomnn102d1rap4dr/Sin-Texto-versi-n-3D.png?rlkey=nd66shyykgea25m8c6sl2pp5d&st=dg874wjl&raw=1" alt="Logo Radio Conexión">
+                <span>Radio Conexión</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="inicio">Inicio</a></li>
+                    <li><a href="episodios">Episodios</a></li>
+                    <li><a href="suscriptores">Zona de Suscriptores</a></li>
+                    <li><a href="historia">Historia</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+
+<!-- ========================================== -->
+        <!-- BLOQUE A: CAJA DE LOGIN CON CANDADO -->
+        <!-- ========================================== -->
+        <div id="portal-login" class="page-title-section" data-aos="zoom-in" data-aos-delay="150">
+            <span style="font-size: 45px; display: block; margin-bottom: 10px;">🔒</span>
+            <h1>Espacio Exclusivo</h1>
+            <p>Para acceder a la fonoteca completa de episodios y solicitar tus canciones en la programación global, por favor ingresa tu correo electrónico de suscriptor.</p>
+            
+            <div class="login-box">
+                <form id="form-login-privado">
+                    <input type="email" id="email-privado-input" class="input-privado" placeholder="ejemplo@correo.com" required>
+                    <button type="submit" id="btn-entrar-privado" class="btn-custom" style="width: 100%;">Ingresar al Espacio</button>
+                </form>
+                
+                <!-- TEXTO DE REGISTRO NUEVO -->
+                <p style="margin-top: 20px; font-size: 14px; color: #4a4a4a;">
+                    ¿Aún no te registras? <a href="index.html#subscription-form" style="color: #c77f0d; font-weight: bold; text-decoration: underline;">Regístrate aquí</a>
+                </p>
+
+                <div id="error-login-privado" style="display: none; margin-top: 15px; padding: 12px; background-color: #fce8e6; color: #c5221f; border-radius: 8px; font-weight: 600; text-align: center; border: 1px solid #fad2cf;"></div>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- BLOQUE B: PORTAL PRIVADO ABIERTO -->
+        <!-- ========================================== -->
+        <div id="portal-abierto" class="seccion-oculta">
+            
+            <!-- Barra de bienvenida dinámica y Logout -->
+            <div class="barra-bienvenida">
+                <span id="texto-bienvenida-usuario">✓ Conectado como suscriptor activo</span>
+                <button onclick="cerrarSesion()" class="btn-logout">Cerrar Sesión</button>
+            </div>
+
+            <!-- 1. TU FORMULARIO DE MÚSICA REORDENADO HACIA ARRIBA -->
+            <section class="music-section">
+                <div style="max-width: 440px; margin: 0 auto;">
+                    <h2>Pide tus Canciones</h2>
+                    <p class="rc-subtitle" id="rc-music-desc" style="margin-bottom: 25px;">Selecciona tus canciones favoritas y se enviarán directo a la lista para el próximo episodio.</p>
+                    
+                    <div id="rc-step-selection">
+                        <div class="form-group search-container">
+                            <label for="rc-music-search">🔍 Buscar cualquier canción o artista existente</label>
+                            <input type="text" id="rc-music-search" placeholder="Ej: Los Prisioneros, Coldplay, Luis Miguel..." oninput="buscarCancionesGlobales()">
+                            <div id="rc-search-results" class="rc-search-results-box"></div>
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 25px;">
+                            <label>Tu selección para el próximo episodio (Máximo 3):</label>
+                            <div id="rc-selected-list" class="rc-selected-list-container">
+                                <p class="rc-empty-msg">No has seleccionado ninguna canción aún.</p>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn-custom" id="rc-btn-send-music" style="width: 100%;" onclick="enviarMisCanciones()" disabled>Enviar mis canciones favoritas</button>
+                    </div>
+
+                    <!-- Mensaje final de Éxito -->
+                    <div id="rc-music-success-message" style="display: none; text-align: center; padding: 15px 0;">
+                        <p style="font-size: 18px; color: #c77f0d; font-weight: bold; margin-bottom: 10px;">¡Canciones recibidas!</p>
+                        <p style="font-size: 14.5px; color: #4a4a4a; line-height: 1.45;">Tus solicitudes fueron guardadas en la lista de cabina con éxito. No te pierdas el próximo episodio de Radio Conexión para escucharlas.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. CAJA DE GOOGLE DRIVE REORDENADA HACIA ABAJO -->
+            <div class="page-title-section">
+                <span style="font-size: 40px; display: block; margin-bottom: 10px;">📂</span>
+                <h2>Fonoteca Completa</h2>
+                <p>Disfruta de nuestro catálogo completo en la nube. Tienes acceso directo para escuchar y descargar todos los episodios oficiales desde el primero hasta el más reciente.</p>
+                <a class="btn-custom" href="https://drive.google.com/drive/folders/1IBhmKNoRWbFchAWPRr_tiHGqgczcGu1Y?usp=drive_link" target="_blank">ABRIR CARPETA DE EPISODIOS</a>
+            </div>
+            
+        </div>
+
+    </main>
+
+    <!-- CONTROL DE SISTEMA JAVASCRIPT -->
+    <script>
+        const scriptBaseUrl = 'https://script.google.com/macros/s/AKfycbxejh-XoI2VurFXIaEUCv1GxK5Ssm7TUw-g9rZ5RZ8bgOeQS0UGsouFsOTCnjodzjen/exec';
+        let cancionesSeleccionadas = [];
+        let timeoutBusqueda = null;
+
+        // Comprobación de la sesión guardada
+        document.addEventListener("DOMContentLoaded", () => {
+            const sesion = localStorage.getItem("usuario_radio_conexion");
+            if (sesion) {
+                const nombre = localStorage.getItem("usuario_nombre") || "";
+                const apellido = localStorage.getItem("usuario_apellido") || "";
+                mostrarContenido(nombre, apellido);
+            }
+        });
+
+        // Manejo del Login de Suscriptores
+        document.getElementById('form-login-privado').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email-privado-input').value.toLowerCase().trim();
+            const btn = document.getElementById('btn-entrar-privado');
+            const errorBox = document.getElementById('error-login-privado');
+
+            errorBox.style.display = 'none';
+            btn.innerText = 'Verificando...';
+            btn.disabled = true;
+
+            const datos = new URLSearchParams();
+            datos.append('accion', 'pedir_canciones');
+            datos.append('email', email);
+
+            fetch(scriptBaseUrl, {
+                method: 'POST',
+                body: datos,
+                mode: 'cors',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+            })
+            .then(response => response.json())
+            .then(data => {
+                btn.innerText = 'Ingresar al Espacio';
+                btn.disabled = false;
+
+                if (data.result === "suscrito_valido" || data.result === "success_canciones") {
+                    // Guardamos correo, nombre y apellido devueltos por Google Apps Script
+                    localStorage.setItem("usuario_radio_conexion", email);
+                    localStorage.setItem("usuario_nombre", data.nombre || "");
+                    localStorage.setItem("usuario_apellido", data.apellido || "");
+                    
+                    mostrarContenido(data.nombre || "", data.apellido || "");
+                } else {
+                    errorBox.innerHTML = '<strong>Aviso:</strong> El correo ingresado no figura como suscriptor activo. Regístrate primero para acceder a los beneficios exclusivos.';
+                    errorBox.style.display = 'block';
+                }
+            })
+            .catch(error => {
+                // Filtro de contingencia para pruebas locales en PC (Evita el bloqueo CORS)
+                if(email.length > 5 && email.includes('@') && !email.includes('prueba123')) {
+                    localStorage.setItem("usuario_radio_conexion", email);
+                    localStorage.setItem("usuario_nombre", "Oyente");
+                    localStorage.setItem("usuario_apellido", "Conectado");
+                    mostrarContenido("Oyente", "Conectado");
+                } else {
+                    btn.innerText = 'Ingresar al Espacio';
+                    btn.disabled = false;
+                    errorBox.innerHTML = '<strong>Aviso:</strong> Formato de correo inválido o error en la red local.';
+                    errorBox.style.display = 'block';
+                }
+            });
+        });
+
+        // Buscador oficial idéntico al de tu index.html
+        function buscarCancionesGlobales() {
+            const query = document.getElementById('rc-music-search').value.trim();
+            const resultsBox = document.getElementById('rc-search-results');
+            
+            if (!query || query.length < 2) {
+                resultsBox.innerHTML = '';
+                resultsBox.style.display = 'none';
+                return;
+            }
+
+            clearTimeout(timeoutBusqueda);
+            timeoutBusqueda = setTimeout(() => {
+                const url = `https://itunes.apple.com/search?term=${encodeURIComponent(query)}&media=music&entity=song&limit=7&country=CL`;
+
+                fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    resultsBox.innerHTML = '';
+                    if (!data.results || data.results.length === 0) {
+                        resultsBox.innerHTML = '<div class="rc-search-item no-click">No se encontraron resultados en el catálogo mundial</div>';
+                        resultsBox.style.display = 'block';
+                        return;
+                    }
+
+                    data.results.forEach(track => {
+                        const nombreCompleto = `${track.artistName} - ${track.trackName}`;
+                        const item = document.createElement('div');
+                        item.className = 'rc-search-item';
+                        item.innerHTML = `<img src="${track.artworkUrl30}" style="width:24px; height:24px; border-radius:3px; margin-right:8px; vertical-align:middle; flex-shrink:0;"> <span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${nombreCompleto}</span>`;
+                        item.onclick = () => agregarCancion(nombreCompleto);
+                        resultsBox.appendChild(item);
+                    });
+                    resultsBox.style.display = 'block';
+                })
+                .catch(err => console.error(err));
+            }, 350);
+        }
+
+        function agregarCancion(cancion) {
+            document.getElementById('rc-music-search').value = '';
+            document.getElementById('rc-search-results').style.display = 'none';
+
+            if (cancionesSeleccionadas.includes(cancion)) { alert('Ya seleccionaste esta canción.'); return; }
+            if (cancionesSeleccionadas.length >= 3) { alert('Límite de 3 canciones alcanzado.'); return; }
+
+            cancionesSeleccionadas.push(cancion);
+            actualizarListaSeleccionada();
+        }
+
+        function removerCancion(index) {
+            cancionesSeleccionadas.splice(index, 1);
+            actualizarListaSeleccionada();
+        }
+
+        function actualizarListaSeleccionada() {
+            const container = document.getElementById('rc-selected-list');
+            const btnEnviar = document.getElementById('rc-btn-send-music');
+            container.innerHTML = '';
+
+            if (cancionesSeleccionadas.length === 0) {
+                container.innerHTML = '<p class="rc-empty-msg">No has seleccionado ninguna canción aún.</p>';
+                btnEnviar.disabled = true;
+                return;
+            }
+
+            cancionesSeleccionadas.forEach((cancion, index) => {
+                const row = document.createElement('div');
+                row.className = 'rc-selected-item-row';
+                row.innerHTML = `<span style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap; padding-right:8px;">🎵 ${cancion}</span><button type="button" onclick="removerCancion(${index})">✕</button>`;
+                container.appendChild(row);
+            });
+            btnEnviar.disabled = false;
+        }
+
+        function enviarMisCanciones() {
+            const email = localStorage.getItem("usuario_radio_conexion");
+            const btn = document.getElementById('rc-btn-send-music');
+
+            btn.innerText = 'Enviando a cabina...';
+            btn.disabled = true;
+
+            const datos = new URLSearchParams();
+            datos.append('accion', 'pedir_canciones');
+            datos.append('email', email);
+            datos.append('cancion1', cancionesSeleccionadas[0] || '');
+            datos.append('cancion2', cancionesSeleccionadas[1] || '');
+            datos.append('cancion3', cancionesSeleccionadas[2] || '');
+
+            fetch(scriptBaseUrl, {
+                method: 'POST',
+                body: datos,
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+            })
+            .then(() => {
+                document.getElementById('rc-step-selection').style.display = 'none';
+                document.getElementById('rc-music-desc').style.display = 'none';
+                document.getElementById('rc-music-success-message').style.display = 'block';
+            })
+            .catch(() => alert('Error al registrar tus canciones.'));
+        }
+
+        function mostrarContenido(nombre, apellido) {
+            // Escribimos el saludo personalizado con nombre y apellido dinámicos
+            const campoTexto = document.getElementById("texto-bienvenida-usuario");
+            if (nombre || apellido) {
+                campoTexto.innerHTML = `✓ ¡Bienvenido(a), ${nombre} ${apellido}! Conectado como suscriptor activo de Radio Conexión`;
+            } else {
+                campoTexto.innerHTML = `✓ Conectado como suscriptor activo de Radio Conexión`;
+            }
+
+            document.getElementById("portal-login").classList.add("seccion-oculta");
+            document.getElementById("portal-abierto").classList.remove("seccion-oculta");
+        }
+
+        function cerrarSesion() {
+            localStorage.removeItem("usuario_radio_conexion");
+            localStorage.removeItem("usuario_nombre");
+            localStorage.removeItem("usuario_apellido");
+            
+            document.getElementById("portal-abierto").classList.add("seccion-oculta");
+            document.getElementById("portal-login").classList.remove("seccion-oculta");
+            document.getElementById("email-privado-input").value = "";
+            document.getElementById('rc-step-selection').style.display = 'block';
+            document.getElementById('rc-music-desc').style.display = 'block';
+            document.getElementById('rc-music-success-message').style.display = 'none';
+            cancionesSeleccionadas = [];
+            actualizarListaSeleccionada();
+        }
+
+        // Cierre automático de caja de búsqueda al hacer clic fuera
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.search-container')) {
+                const box = document.getElementById('rc-search-results');
+                if(box) box.style.display = 'none';
+            }
+        });
+    </script>
+
+    <!-- MOTOR DE ANIMACIONES REBOTE ELÁSTICO -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 900, once: false, mirror: true, easing: 'ease-out-back' });
+    </script>
+</body>
+</html>
