@@ -72,7 +72,7 @@
         }
         .btn-logout { background: none; border: none; color: #c5221f; text-decoration: underline; font-weight: bold; cursor: pointer; }
 
-        /* Buscador del Formulario de tu index.html */
+        /* Buscador del Formulario */
         .form-group { display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px; position: relative; }
         .form-group label { display: block; color: #4a4a4a; font-weight: 600; font-size: 13px; text-align: left; margin-bottom: -4px; }
         .form-group input[type="text"] { height: 40px; padding: 0 10px; border: 1px solid #cfd8dc; border-radius: 6px; outline: none; font-family: 'Inter', sans-serif; background-color: #f5f7f8; font-size: 14.5px; }
@@ -108,18 +108,18 @@
             </div>
             <nav>
                 <ul>
-    <li><a href="inicio">Inicio</a></li>
-    <li><a href="episodios">Episodios</a></li>
-    <li><a href="suscriptores" class="active">Zona de Suscriptores</a></li>
-    <li><a href="historia">Historia</a></li>
-</ul>
+                    <li><a href="inicio">Inicio</a></li>
+                    <li><a href="episodios">Episodios</a></li>
+                    <li><a href="suscriptores" class="active">Zona de Suscriptores</a></li>
+                    <li><a href="historia">Historia</a></li>
+                </ul>
             </nav>
         </div>
     </header>
 
     <main class="container">
 
-<!-- ========================================== -->
+        <!-- ========================================== -->
         <!-- BLOQUE A: CAJA DE LOGIN CON CANDADO -->
         <!-- ========================================== -->
         <div id="portal-login" class="page-title-section" data-aos="zoom-in" data-aos-delay="150">
@@ -133,9 +133,9 @@
                     <button type="submit" id="btn-entrar-privado" class="btn-custom" style="width: 100%;">Ingresar al Espacio</button>
                 </form>
                 
-                <!-- TEXTO DE REGISTRO NUEVO -->
+                <!-- TEXTO DE REGISTRO -->
                 <p style="margin-top: 20px; font-size: 14px; color: #4a4a4a;">
-                    ¿Aún no te registras? <a href="index.html#subscription-form" style="color: #c77f0d; font-weight: bold; text-decoration: underline;">Regístrate aquí</a>
+                    ¿Aún no te registras? <a href="inicio#subscription-form" style="color: #c77f0d; font-weight: bold; text-decoration: underline;">Regístrate aquí</a>
                 </p>
 
                 <div id="error-login-privado" style="display: none; margin-top: 15px; padding: 12px; background-color: #fce8e6; color: #c5221f; border-radius: 8px; font-weight: 600; text-align: center; border: 1px solid #fad2cf;"></div>
@@ -176,7 +176,7 @@
                         <button type="button" class="btn-custom" id="rc-btn-send-music" style="width: 100%;" onclick="enviarMisCanciones()" disabled>Enviar mis canciones favoritas</button>
                     </div>
 
-                    <!-- Mensaje final de Éxito -->
+                    <!-- Mensaje final de Éxito de Música -->
                     <div id="rc-music-success-message" style="display: none; text-align: center; padding: 15px 0;">
                         <p style="font-size: 18px; color: #c77f0d; font-weight: bold; margin-bottom: 10px;">¡Canciones recibidas!</p>
                         <p style="font-size: 14.5px; color: #4a4a4a; line-height: 1.45;">Tus solicitudes fueron guardadas en la lista de cabina con éxito. No te pierdas el próximo episodio de Radio Conexión para escucharlas.</p>
@@ -184,7 +184,30 @@
                 </div>
             </section>
 
-            <!-- 2. CAJA DE GOOGLE DRIVE REORDENADA HACIA ABAJO -->
+            <!-- 2. NUEVA SECCIÓN EN EL MEDIO: DEJA TU MENSAJE AQUÍ -->
+            <section class="music-section">
+                <div style="max-width: 440px; margin: 0 auto;">
+                    <h2>Deja tu mensaje aquí</h2>
+                    <p class="rc-subtitle" id="rc-msg-desc" style="margin-bottom: 25px;">Pueden ser sugerencias, comentarios o conversar sobre el tema de conversación del episodio anterior. ¡Estaremos dispuestos y contentos a leerte!</p>
+                    
+                    <form id="rc-user-msg-form" class="form-group">
+                        <div style="display: flex; flex-direction: column; gap: 8px; text-align: left;">
+                            <label for="rc-txt-mensaje" style="color: #4a4a4a; font-weight: 600; font-size: 13px;">Escribe tu comentario o mensaje para la cabina:</label>
+                            <textarea id="rc-txt-mensaje" rows="4" placeholder="Escribe aquí lo que quieras compartir con Radio Conexión..." required style="width: 100%; padding: 12px; border: 1px solid #cfd8dc; border-radius: 6px; outline: none; font-family: 'Inter', sans-serif; background-color: #f5f7f8; font-size: 14.5px; resize: vertical; min-height: 80px;"></textarea>
+                        </div>
+                        
+                        <button type="submit" id="rc-btn-send-msg" class="btn-custom" style="width: 100%; margin-top: 15px;">Enviar mi mensaje</button>
+                    </form>
+
+                    <!-- Mensaje final de Éxito del Comentario -->
+                    <div id="rc-msg-success-box" style="display: none; text-align: center; padding: 15px 0;">
+                        <p style="font-size: 18px; color: #c77f0d; font-weight: bold; margin-bottom: 10px;">¡Mensaje enviado!</p>
+                        <p style="font-size: 14.5px; color: #4a4a4a; line-height: 1.45;">Tu comentario ha sido enviado con éxito directo a los servidores de la radio. ¡Gracias por conectar con nosotros!</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. CAJA DE GOOGLE DRIVE ABAJO -->
             <div class="page-title-section">
                 <span style="font-size: 40px; display: block; margin-bottom: 10px;">📂</span>
                 <h2>Fonoteca Completa</h2>
@@ -209,6 +232,12 @@
                 const nombre = localStorage.getItem("usuario_nombre") || "";
                 const apellido = localStorage.getItem("usuario_apellido") || "";
                 mostrarContenido(nombre, apellido);
+            }
+
+            // Escuchar el evento de envío del formulario de mensajes
+            const msgForm = document.getElementById('rc-user-msg-form');
+            if(msgForm) {
+                msgForm.addEventListener('submit', enviarMensajeOyente);
             }
         });
 
@@ -239,7 +268,6 @@
                 btn.disabled = false;
 
                 if (data.result === "suscrito_valido" || data.result === "success_canciones") {
-                    // Guardamos correo, nombre y apellido devueltos por Google Apps Script
                     localStorage.setItem("usuario_radio_conexion", email);
                     localStorage.setItem("usuario_nombre", data.nombre || "");
                     localStorage.setItem("usuario_apellido", data.apellido || "");
@@ -251,7 +279,6 @@
                 }
             })
             .catch(error => {
-                // Filtro de contingencia para pruebas locales en PC (Evita el bloqueo CORS)
                 if(email.length > 5 && email.includes('@') && !email.includes('prueba123')) {
                     localStorage.setItem("usuario_radio_conexion", email);
                     localStorage.setItem("usuario_nombre", "Oyente");
@@ -369,8 +396,42 @@
             .catch(() => alert('Error al registrar tus canciones.'));
         }
 
+        // Lógica para enviar el mensaje de oyente
+        function enviarMensajeOyente(e) {
+            e.preventDefault();
+            const email = localStorage.getItem("usuario_radio_conexion");
+            const mensaje = document.getElementById('rc-txt-mensaje').value.trim();
+            const btn = document.getElementById('rc-btn-send-msg');
+
+            if (!mensaje) return;
+
+            btn.innerText = 'Enviando mensaje...';
+            btn.disabled = true;
+
+            const datos = new URLSearchParams();
+            datos.append('accion', 'dejar_comentario');
+            datos.append('email', email);
+            datos.append('comentario', mensaje);
+
+            fetch(scriptBaseUrl, {
+                method: 'POST',
+                body: datos,
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+            })
+            .then(() => {
+                document.getElementById('rc-user-msg-form').style.display = 'none';
+                document.getElementById('rc-msg-desc').style.display = 'none';
+                document.getElementById('rc-msg-success-box').style.display = 'block';
+            })
+            .catch(() => {
+                alert('Error al registrar tu mensaje. Inténtalo de nuevo.');
+                btn.innerText = 'Enviar mi mensaje';
+                btn.disabled = false;
+            });
+        }
+
         function mostrarContenido(nombre, apellido) {
-            // Escribimos el saludo personalizado con nombre y apellido dinámicos
             const campoTexto = document.getElementById("texto-bienvenida-usuario");
             if (nombre || apellido) {
                 campoTexto.innerHTML = `✓ ¡Bienvenido(a), ${nombre} ${apellido}! Conectado como suscriptor activo de Radio Conexión`;
@@ -390,11 +451,19 @@
             document.getElementById("portal-abierto").classList.add("seccion-oculta");
             document.getElementById("portal-login").classList.remove("seccion-oculta");
             document.getElementById("email-privado-input").value = "";
+            
+            // Restaurar estado de música
             document.getElementById('rc-step-selection').style.display = 'block';
             document.getElementById('rc-music-desc').style.display = 'block';
             document.getElementById('rc-music-success-message').style.display = 'none';
             cancionesSeleccionadas = [];
             actualizarListaSeleccionada();
+
+            // Restaurar estado de comentarios
+            document.getElementById('rc-user-msg-form').style.display = 'block';
+            document.getElementById('rc-msg-desc').style.display = 'block';
+            document.getElementById('rc-msg-success-box').style.display = 'none';
+            document.getElementById('rc-txt-mensaje').value = '';
         }
 
         // Cierre automático de caja de búsqueda al hacer clic fuera
