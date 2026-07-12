@@ -678,52 +678,7 @@
             </div>
         </section>
 
-        <!-- SECCIÓN NUEVA: PEDIR CANCIONES (CON DISEÑO UNIFICADO) -->
-        <section class="music-section" data-aos="fade-up">
-            <div class="music-box">
-                <h2>Pide tus Canciones</h2>
-                <p class="rc-subtitle" id="rc-music-desc">Exclusivo para suscriptores activos. Ingresa tu correo para verificar tu cuenta y buscar cualquier canción del mundo.</p>
-                
-                <!-- PASO 1: MÓDULO DE VERIFICACIÓN -->
-                <div id="rc-step-verification">
-                    <div class="rc-form-group">
-                        <label for="rc-verify-email">Correo Electrónico Registrado</label>
-                        <input type="email" id="rc-verify-email" placeholder="ejemplo@correo.com" required>
-                    </div>
-                    
-                    <div id="rc-error-message" class="rc-error-alert" style="display: none;"></div>
-                    
-                    <button type="button" class="btn-custom" id="rc-btn-verify" style="border: none; cursor: pointer; width: 100%;" onclick="verificarYContinuar()">Verificar mi Suscripción</button>
-                </div>
-
-                <!-- PASO 2: BUSCADOR MUNDIAL Y SELECCIÓN -->
-                <div id="rc-step-selection" style="display: none;">
-                    <p class="rc-success-alert">✓ Cuenta de suscriptor verificada con éxito. Ya puedes buscar y elegir tus temas:</p>
-                    
-                    <div class="rc-form-group search-container">
-                        <label for="rc-music-search">🔍 Buscar cualquier canción o artista existente</label>
-                        <input type="text" id="rc-music-search" placeholder="Ej: Los Prisioneros, Coldplay, Luis Miguel..." oninput="buscarCancionesGlobales()">
-                        <div id="rc-search-results" class="rc-search-results-box"></div>
-                    </div>
-
-                    <div class="rc-form-group">
-                        <label>Tu selección para el próximo episodio (Máximo 3):</label>
-                        <div id="rc-selected-list" class="rc-selected-list-container">
-                            <p class="rc-empty-msg">No has seleccionado ninguna canción aún.</p>
-                        </div>
-                    </div>
-
-                    <button type="button" class="btn-custom" id="rc-btn-send-music" style="border: none; cursor: pointer; width: 100%;" onclick="enviarMisCanciones()" disabled>Enviar mis canciones favoritas</button>
-                </div>
-
-                <!-- PASO 3: MENSAJE DE ÉXITO FINAL -->
-                <div id="rc-music-success-message" style="display: none; text-align: center; padding: 15px 0; font-family: 'Inter', sans-serif;">
-                    <p style="font-size: 18px; color: #c77f0d; font-weight: bold; margin-bottom: 10px;">¡Canciones recibidas!</p>
-                    <p style="font-size: 14.5px; color: #4a4a4a; line-height: 1.45;">Tus solicitudes fueron guardadas en la lista de cabina con éxito. No te pierdas el próximo episodio de Radio Conexión para escucharlas.</p>
-                </div>
-            </div>
-        </section>
-
+        
         <!-- SECCIÓN DE WHATSAPP INDEPENDIENTE -->
         <section class="whatsapp-section" data-aos="fade-up">
             <h2>Radio Conexión en WhatsApp 🤳</h2>
