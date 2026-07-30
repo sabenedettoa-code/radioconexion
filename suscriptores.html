@@ -42,6 +42,8 @@
         nav ul li a { color: #4a4a4a; font-size: 0.95rem; font-weight: 500; }
         nav ul li a.active, nav ul li a:hover { color: #c77f0d; font-weight: bold; }
 
+        .header-actions { display: flex; align-items: center; gap: 12px; }
+        .dark-btn { background: none; border: none; cursor: pointer; font-size: 20px; line-height: 1; }
         .mobile-menu-btn { display: none; background: none; border: none; font-size: 26px; color: #c77f0d; cursor: pointer; }
 
         body.dark-mode { background-color: #121212 !important; color: #f5f7f8 !important; }
@@ -131,15 +133,18 @@
 </head>
 <body>
 
-    <button id="dark-mode-toggle" style="position: fixed; top: 20px; right: 20px; z-index: 1001; background: rgba(255,255,255,0.8); border: 1px solid #cfd8dc; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; font-size: 18px;">🌙</button>
-
     <header>
         <div class="nav-wrapper">
             <div class="brand-logo">
                 <img src="https://www.dropbox.com/scl/fi/7h2pubomnn102d1rap4dr/Sin-Texto-versi-n-3D.png?rlkey=nd66shyykgea25m8c6sl2pp5d&st=dg874wjl&raw=1" alt="Logo Radio Conexión">
                 <span>Radio Conexión</span>
             </div>
-            <button class="mobile-menu-btn" id="menu-toggle">☰</button>
+            
+            <div class="header-actions">
+                <button id="dark-mode-toggle" class="dark-btn">🌙</button>
+                <button class="mobile-menu-btn" id="menu-toggle">☰</button>
+            </div>
+
             <nav id="nav-menu">
                 <ul>
                     <li><a href="inicio">Inicio</a></li>
@@ -294,7 +299,6 @@
             if(msgForm) msgForm.addEventListener('submit', enviarMensajeOyente);
         });
 
-        // VALIDACIÓN DE SUSCRIPTOR
         document.getElementById('form-login-privado').addEventListener('submit', function(e) {
             e.preventDefault();
             const email = document.getElementById('email-privado-input').value.toLowerCase().trim();
@@ -330,7 +334,6 @@
                 }
             })
             .catch(error => {
-                // Modo contingencia si hay bloqueo de red pero el e-mail es válido
                 if(email.length > 4 && email.includes('@') && email.includes('.')) {
                     localStorage.setItem("usuario_radio_conexion", email);
                     localStorage.setItem("usuario_nombre", "Oyente");
