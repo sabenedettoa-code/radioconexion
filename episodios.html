@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es-419">
-<link rel="manifest" href="/manifest.json">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,40 +7,49 @@
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>Episodios | Radio Conexión</title>
     
-    <!-- LOGO EN LA PESTAÑA (FAVICON) -->
     <link rel="icon" type="image/png" href="https://www.dropbox.com/scl/fi/7h2pubomnn102d1rap4dr/Sin-Texto-versi-n-3D.png?rlkey=nd66shyykgea25m8c6sl2pp5d&st=dg874wjl&raw=1">
     
-    <!-- Carga de Fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unica+One&display=swap" rel="stylesheet">
-
-    <!-- ESTILOS PARA TRANSICIONES AL DESPLAZAR (AOS) -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background-color: #f5f7f8; color: #1c1c1c; line-height: 1.6; overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; background-color: #f5f7f8; color: #1c1c1c; line-height: 1.6; overflow-x: hidden; transition: background-color 0.3s, color 0.3s; }
         a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
-        .container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 20px 120px 20px; }
         h1, h2, h3, .brand-logo span { font-family: 'Unica One', sans-serif; color: #c77f0d; font-weight: bold; }
         
+        .btn-custom {
+            background-color: #e5a919; color: #1c1c1c; padding: 12px 35px; border-radius: 25px;
+            font-weight: bold; display: inline-block; box-shadow: 0 4px 10px rgba(229, 169, 25, 0.2); transition: all 0.3s ease;
+        }
+
         header {
-            background-color: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            position: sticky; top: 15px; z-index: 1000;
-            margin: 15px auto 25px auto; max-width: 1240px; width: calc(100% - 40px);
-            border-radius: 30px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.4); padding: 0 25px;
+            background-color: rgba(255, 255, 255, 0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            position: sticky; top: 15px; z-index: 1000; margin: 15px auto 25px auto; max-width: 1240px;
+            width: calc(100% - 40px); border-radius: 30px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.4); padding: 0 25px; transition: background-color 0.3s;
         }
         .nav-wrapper { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; }
         .brand-logo { display: flex; align-items: center; gap: 10px; }
         .brand-logo img { width: 40px; height: 40px; object-fit: cover; border-radius: 50%; background-color: #ffffff; border: 1px solid #e5a919; }
         .brand-logo span { font-size: 24px; letter-spacing: 1px; }
+
         nav ul { display: flex; list-style: none; gap: 24px; align-items: center; }
         nav ul li a { color: #4a4a4a; font-size: 0.95rem; font-weight: 500; }
         nav ul li a.active, nav ul li a:hover { color: #e5a919; font-weight: bold; }
+
+        .mobile-menu-btn { display: none; background: none; border: none; font-size: 26px; color: #c77f0d; cursor: pointer; }
+
+        body.dark-mode { background-color: #121212 !important; color: #f5f7f8 !important; }
+        body.dark-mode header, body.dark-mode .page-title-section, body.dark-mode .sticky-player-bar {
+            background: rgba(28, 28, 28, 0.85) !important;
+            border-color: rgba(255, 255, 255, 0.1) !important; color: #e0e0e0 !important;
+        }
+        body.dark-mode p, body.dark-mode nav ul li a { color: #bbbbbb !important; }
+        body.dark-mode nav ul li a.active { color: #e5a919 !important; }
 
         main { padding: 20px 0 40px 0; }
         .page-title-section {
@@ -54,10 +62,29 @@
         .desc-link { color: #c77f0d; text-decoration: underline; font-weight: 600; }
         .desc-link:hover { color: #b8820a; }
 
+        .sticky-player-bar {
+            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: calc(100% - 40px); max-width: 600px;
+            background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(229, 169, 25, 0.4); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); border-radius: 20px;
+            padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; z-index: 9999;
+        }
+        .player-info { display: flex; align-items: center; gap: 12px; }
+        .player-text strong { display: block; font-size: 14px; }
+        .player-text small { color: #c77f0d; font-size: 12px; font-weight: 600; }
+        .equalizer-icon { display: flex; align-items: flex-end; gap: 3px; width: 18px; height: 18px; }
+        .equalizer-icon span { width: 4px; background-color: #c77f0d; border-radius: 2px; animation: bounce 1.2s infinite ease-in-out; }
+        .equalizer-icon span:nth-child(1) { height: 60%; animation-delay: -0.4s; }
+        .equalizer-icon span:nth-child(2) { height: 100%; animation-delay: -0.2s; }
+        .equalizer-icon span:nth-child(3) { height: 40%; animation-delay: 0s; }
+        @keyframes bounce { 0%, 100% { transform: scaleY(0.4); } 50% { transform: scaleY(1); } }
+
         @media (max-width: 768px) {
             header { top: 10px; margin: 10px auto; width: calc(100% - 20px); padding: 15px; border-radius: 20px; }
-            .nav-wrapper { flex-direction: column; gap: 12px; padding: 5px 0; }
-            nav ul { gap: 15px; flex-wrap: wrap; justify-content: center; }
+            .mobile-menu-btn { display: block; }
+            .nav-wrapper { flex-direction: row; justify-content: space-between; }
+            nav { display: none; width: 100%; margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(0,0,0,0.05); }
+            nav.nav-open { display: block; }
+            nav ul { flex-direction: column; gap: 12px; flex-wrap: wrap; justify-content: center; }
             .page-title-section { padding: 25px; }
             .page-title-section h1 { font-size: 24pt; }
         }
@@ -65,69 +92,80 @@
 </head>
 <body>
 
+    <button id="dark-mode-toggle" style="position: fixed; top: 20px; right: 20px; z-index: 1001; background: rgba(255,255,255,0.8); border: 1px solid #cfd8dc; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; font-size: 18px;">🌙</button>
+
     <header>
         <div class="nav-wrapper">
             <div class="brand-logo">
                 <img src="https://www.dropbox.com/scl/fi/7h2pubomnn102d1rap4dr/Sin-Texto-versi-n-3D.png?rlkey=nd66shyykgea25m8c6sl2pp5d&st=dg874wjl&raw=1" alt="Logo Radio Conexión">
                 <span>Radio Conexión</span>
             </div>
-            <nav>
+            <button class="mobile-menu-btn" id="menu-toggle">☰</button>
+            <nav id="nav-menu">
                 <ul>
-    <li><a href="inicio">Inicio</a></li>
-    <li><a href="episodios" class="active">Episodios</a></li>
-    <li><a href="suscriptores">Zona de Suscriptores</a></li>
-    <li><a href="historia">Historia</a></li>
-</ul>
+                    <li><a href="inicio">Inicio</a></li>
+                    <li><a href="episodios" class="active">Episodios</a></li>
+                    <li><a href="suscriptores">Zona de Suscriptores</a></li>
+                    <li><a href="historia">Historia</a></li>
+                </ul>
             </nav>
         </div>
     </header>
-
 
     <main class="container">
         <!-- CAJA DE EPISODIOS ACTUALIZADA CON REPRODUCTOR -->
         <div class="page-title-section" data-aos="zoom-in" data-aos-delay="150">
             <h1>Episodios</h1>
             <p>Disfruta de nuestro catálogo de contenidos sonoros grabados en alta definición.<br><br>
-               Para escuchar todos los episodios, <a href="index.html#subscription-form" class="desc-link">suscríbete</a> y tendrás acceso a la carpeta con todos los episodios; desde el primero hasta el más reciente.
+               Para escuchar todos los episodios, <a href="inicio#subscription-form" class="desc-link">suscríbete</a> y tendrás acceso a la carpeta con todos los episodios; desde el primero hasta el más reciente.
             </p>
 
-            <!-- 🌟 REPRODUCTOR EMBEBIDO DE SPOTIFY -->
-            <div style="margin-top: 35px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
-            <!-- 🌟 TU REPRODUCTOR OFICIAL DE RADIO CONEXIÓN CON IDENTIDAD CORPORATIVA -->
-<div style="margin-top: 35px; border-radius: 16px; overflow: hidden; padding: 3px; background: #c77f0d; box-shadow: 0 8px 24px rgba(199, 127, 13, 0.25); transition: all 0.3s ease-out;" data-aos="zoom-in">
-    <iframe style="border-radius:12px; display: block;" 
-            src="https://open.spotify.com/embed/show/6CDimSvVahr4PZSiypB0vp?utm_source=generator&theme=0" 
-            width="100%" 
-            height="232" 
-            frameBorder="0" 
-            allowfullscreen="" 
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-            loading="lazy">
-    </iframe>
-</div>
+            <!-- REPRODUCTOR EMBEBIDO DE SPOTIFY -->
+            <div style="margin-top: 35px; border-radius: 16px; overflow: hidden; padding: 3px; background: #c77f0d; box-shadow: 0 8px 24px rgba(199, 127, 13, 0.25); transition: all 0.3s ease-out;" data-aos="zoom-in">
+                <iframe id="spotify-iframe" style="border-radius:12px; display: block;" 
+                        src="https://open.spotify.com/embed/show/6CDimSvVahr4PZSiypB0vp?utm_source=generator&theme=0" 
+                        width="100%" 
+                        height="232" 
+                        frameBorder="0" 
+                        allowfullscreen="" 
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                        loading="lazy">
+                </iframe>
+            </div>
         </div>
     </main>
 
-    <!-- MOTOR DE TRANSICIONES (AOS) TOTALMENTE INTERACTIVO -->
+    <!-- BARRA REPRODUCTOR FLOTANTE PERSISTENTE -->
+    <div id="sticky-audio-player" class="sticky-player-bar">
+        <div class="player-info">
+            <div class="equalizer-icon"><span></span><span></span><span></span></div>
+            <div class="player-text">
+                <strong id="sticky-title">Radio Conexión</strong>
+                <small id="sticky-subtitle">🎙️ Episodio 97 - ¡Novedades!</small>
+            </div>
+        </div>
+        <a href="inicio#subscription-form" class="btn-custom" style="padding: 6px 16px; font-size: 12px;">Suscribirse</a>
+    </div>
+
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        AOS.init({
-            duration: 900,
-            once: false,
-            easing: 'ease-out-back'
+        AOS.init({ duration: 900, once: false, mirror: true, easing: 'ease-out-back' });
+
+        document.getElementById('menu-toggle').addEventListener('click', () => {
+            document.getElementById('nav-menu').classList.toggle('nav-open');
         });
+
+        const themeBtn = document.getElementById('dark-mode-toggle');
+        themeBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            themeBtn.innerText = isDark ? '☀️' : '🌙';
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeBtn.innerText = '☀️';
+        }
     </script>
 </body>
 </html>
-
-    <!-- MOTOR DE TRANSICIONES CON EFECTO ELÁSTICO (RUBBER BAND) -->
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 900,         // Un toque más lento (0.9s) para que se aprecie la elasticidad
-            once: false,           // Se repite tanto al bajar como al subir
-            mirror: true,          // Permite que se vuelva a estirar si pasas de largo[cite: 3]
-            easing: 'ease-out-back' // 🌟 EL TRUCO: Hace que el elemento pase su posición final y regrese con un rebote elástico
-        });
-    </script>
-</body>
