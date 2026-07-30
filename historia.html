@@ -106,7 +106,8 @@
             font-weight: bold;
         }
 
-        .mobile-menu-btn { display: none; background: none; border: none; font-size: 26px; color: #c77f0d; cursor: pointer; }
+        .dark-btn { background: none; border: none; cursor: pointer; font-size: 20px; line-height: 1; padding: 4px 8px; border-radius: 50%; }
+        .mobile-menu-btn { display: none; background: none; border: none; font-size: 26px; color: #c77f0d; cursor: pointer; width: 30px; text-align: center; }
 
         body.dark-mode { background-color: #121212 !important; color: #f5f7f8 !important; }
         body.dark-mode header, body.dark-mode .history-section, body.dark-mode .founder-section, body.dark-mode .sticky-player-bar {
@@ -196,7 +197,6 @@
         .equalizer-icon span:nth-child(3) { height: 40%; animation-delay: 0s; }
         @keyframes bounce { 0%, 100% { transform: scaleY(0.4); } 50% { transform: scaleY(1); } }
 
-        /* CORRECCIÓN MENÚ HAMBURGUESA MÓVIL */
         @media (max-width: 768px) {
             header {
                 top: 10px;
@@ -228,21 +228,22 @@
 </head>
 <body>
 
-    <button id="dark-mode-toggle" style="position: fixed; top: 20px; right: 20px; z-index: 1001; background: rgba(255,255,255,0.8); border: 1px solid #cfd8dc; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; font-size: 18px;">🌙</button>
-
-    <header>
+    <header id="main-header">
         <div class="nav-wrapper">
             <div class="brand-logo">
                 <img src="https://www.dropbox.com/scl/fi/7h2pubomnn102d1rap4dr/Sin-Texto-versi-n-3D.png?rlkey=nd66shyykgea25m8c6sl2pp5d&st=dg874wjl&raw=1" alt="Logo Radio Conexión">
                 <span>Radio Conexión</span>
             </div>
+            
             <button class="mobile-menu-btn" id="menu-toggle">☰</button>
+
             <nav id="nav-menu">
                 <ul>
                     <li><a href="inicio">Inicio</a></li>
                     <li><a href="episodios">Episodios</a></li>
                     <li><a href="suscriptores">Zona de Suscriptores</a></li>
                     <li><a href="historia" class="active">Historia</a></li>
+                    <li><button id="dark-mode-toggle" class="dark-btn">🌙</button></li>
                 </ul>
             </nav>
         </div>
@@ -255,15 +256,15 @@
             
             <div class="history-content">
                 <p>
-                    Radio Conexión nació con un propósito claro: ser un faro de luz en medio de la saturación informativa actual. Convencidos de que el mundo está lleno de acciones inspiradoras que merecen ser contadas, decidimos crear un espacio dedicado exclusivamente al periodismo positivo.
+                    Radio Conexión nació con un propósito claro: ser un faro de luz en medio de la saturación informativa actual[cite: 2]. Convencidos de que el mundo está lleno de acciones inspiradoras que merecen ser contadas, decidimos crear un espacio dedicado exclusivamente al periodismo positivo[cite: 2].
                 </p>
 
                 <div class="highlight-quote">
-                    "Conectados con tus sentidos: Queremos dejar de lado la oscuridad del mundo para darle luz a su lado bueno."
+                    "Conectados con tus sentidos: Queremos dejar de lado la oscuridad del mundo para darle luz a su lado bueno."[cite: 2]
                 </div>
 
                 <p>
-                    Desde nuestros inicios, nos hemos enfocado en rescatar historias de superación, avances que mejoran vidas y proyectos comunitarios que transforman realidades. No se trata de ignorar los problemas, sino de enfocar la mirada en las soluciones y en la resiliencia humana.
+                    Desde nuestros inicios, nos hemos enfocado en rescatar historias de superación, avances que mejoran vidas y proyectos comunitarios que transforman realidades[cite: 2]. No se trata de ignorar los problemas, sino de enfocar la mirada en las soluciones y en la resiliencia humana[cite: 2].
                 </p>
             </div>
         </section>
@@ -273,26 +274,26 @@
             
             <div class="founder-content">
                 <p>
-                    Marzo es un mes muy especial para la radio, ¿por qué?, porque en este mes comencé a grabar los primeros episodios de Radio Conexión. 
+                    Marzo es un mes muy especial para la radio, ¿por qué?, porque en este mes comencé a grabar los primeros episodios de Radio Conexión[cite: 2]. 
                 </p>
                 <p>
-                    Todo inició en plena cuarentena, durante la pandemia (año 2020), cuando un día como cualquiera, prendo mi computador, abro la grabadora de voz y me doy cuenta que puedo poner música y se escuchaba "bien". Primero, compartí los primeros episodios a mi familia más cercana. Pero habían algunos problemas; primero, mientras ponía las canciones se escuchaba todo el ruido de fondo, lo cual era bastante desagradable, más aún cuando estabamos todos encerrados. 
+                    Todo inició en plena cuarentena, durante la pandemia (año 2020), cuando un día como cualquiera, prendo mi computador, abro la grabadora de voz y me doy cuenta que puedo poner música y se escuchaba "bien"[cite: 2]. Primero, compartí los primeros episodios a mi familia más cercana[cite: 2]. Pero habían algunos problemas; primero, mientras ponía las canciones se escuchaba todo el ruido de fondo, lo cual era bastante desagradable, más aún cuando estabamos todos encerrados[cite: 2]. 
                 </p>
                 <p>
-                    Resulta que una persona muy generosa me recomendó el programa "Audacity" y solucionó ese problema. Dejé de usar la grabadora y comencé a usar Audacity para poder colocar música de mucha, pero mucha mejor calidad y sin ruido externo de fondo. Además, evolucionamos en cuanto a música de fondo, después de varios meses, descubrí cómo hacerlo, y desde ese día los episodios son mucho más entretenidos y alegres. 
+                    Resulta que una persona muy generosa me recomendó el programa "Audacity" y solucionó ese problema[cite: 2]. Dejé de usar la grabadora y comencé a usar Audacity para poder colocar música de mucha, pero mucha mejor calidad y sin ruido externo de fondo[cite: 2]. Además, evolucionamos en cuanto a música de fondo, después de varios meses, descubrí cómo hacerlo, y desde ese día los episodios son mucho más entretenidos y alegres[cite: 2]. 
                 </p>
                 <p>
-                    La siguiente evolución fue el abrir la página web, para que puedas estar más conectado junto a tu radio. Modificaciones en el logo y lema de Radio Conexión. Eso y más cambios, ha tenido la radio. Me enorgullece un montón que Radio Conexión ha perdurado durante seis años y ha evolucionado un montón.
+                    La siguiente evolución fue el abrir la página web, para que puedas estar más conectado junto a tu radio[cite: 2]. Modificaciones en el logo y lema de Radio Conexión[cite: 2]. Eso y más cambios, ha tenido la radio[cite: 2]. Me enorgullece un montón que Radio Conexión ha perdurado durante seis años y ha evolucionado un montón[cite: 2].
                 </p>
                 <p>
-                    Gracias querida audiencia por ser parte de no solo una radio, sino una gran comunidad. Gracias por escuchar los episodios de principio a fin.
+                    Gracias querida audiencia por ser parte de no solo una radio, sino una gran comunidad[cite: 2]. Gracias por escuchar los episodios de principio a fin[cite: 2].
                 </p>
                 
                 <div class="signature-block">
                     <div class="signature-name">Santiago Benedetto Abarca</div>
                     <div class="signature-title">
                         Locutor y Propietario de<br>
-                        <strong>Radio Conexión - Conectados Con Tus Sentidos</strong>
+                        <strong>Radio Conexión - Conectados Con Tus Sentidos</strong>[cite: 2]
                     </div>
                 </div>
             </div>
@@ -320,8 +321,23 @@
             easing: 'ease-out-back' 
         });
 
-        document.getElementById('menu-toggle').addEventListener('click', () => {
-            document.getElementById('nav-menu').classList.toggle('nav-open');
+        const menuToggleBtn = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuToggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navMenu.classList.toggle('nav-open');
+            const estaAbierto = navMenu.classList.contains('nav-open');
+            menuToggleBtn.innerHTML = estaAbierto ? '✕' : '☰';
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('#main-header')) {
+                if (navMenu.classList.contains('nav-open')) {
+                    navMenu.classList.remove('nav-open');
+                    menuToggleBtn.innerHTML = '☰';
+                }
+            }
         });
 
         const themeBtn = document.getElementById('dark-mode-toggle');

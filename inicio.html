@@ -48,7 +48,8 @@
         nav ul li a { color: #4a4a4a; font-size: 0.95rem; font-weight: 500; }
         nav ul li a.active, nav ul li a:hover { color: #c77f0d; font-weight: bold; }
 
-        .mobile-menu-btn { display: none; background: none; border: none; font-size: 26px; color: #c77f0d; cursor: pointer; }
+        .dark-btn { background: none; border: none; cursor: pointer; font-size: 20px; line-height: 1; padding: 4px 8px; border-radius: 50%; }
+        .mobile-menu-btn { display: none; background: none; border: none; font-size: 26px; color: #c77f0d; cursor: pointer; width: 30px; text-align: center; }
 
         body.dark-mode { background-color: #121212 !important; color: #f5f7f8 !important; }
         body.dark-mode header,
@@ -141,21 +142,22 @@
 </head>
 <body dir="ltr">
 
-    <button id="dark-mode-toggle" style="position: fixed; top: 20px; right: 20px; z-index: 1001; background: rgba(255,255,255,0.8); border: 1px solid #cfd8dc; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; font-size: 18px;">🌙</button>
-
-    <header>
+    <header id="main-header">
         <div class="nav-wrapper">
             <div class="brand-logo">
                 <img src="https://www.dropbox.com/scl/fi/7h2pubomnn102d1rap4dr/Sin-Texto-versi-n-3D.png?rlkey=nd66shyykgea25m8c6sl2pp5d&st=dg874wjl&raw=1" alt="Logo Radio Conexión">
                 <span>Radio Conexión</span>
             </div>
+            
             <button class="mobile-menu-btn" id="menu-toggle">☰</button>
+
             <nav id="nav-menu">
                 <ul>
                     <li><a href="inicio" class="active">Inicio</a></li>
                     <li><a href="episodios">Episodios</a></li>
                     <li><a href="suscriptores">Zona de Suscriptores</a></li>
                     <li><a href="historia">Historia</a></li>
+                    <li><button id="dark-mode-toggle" class="dark-btn">🌙</button></li>
                 </ul>
             </nav>
         </div>
@@ -300,8 +302,23 @@
     <script>
         AOS.init({ duration: 900, once: false, mirror: true, easing: 'ease-out-back' });
 
-        document.getElementById('menu-toggle').addEventListener('click', () => {
-            document.getElementById('nav-menu').classList.toggle('nav-open');
+        const menuToggleBtn = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuToggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navMenu.classList.toggle('nav-open');
+            const estaAbierto = navMenu.classList.contains('nav-open');
+            menuToggleBtn.innerHTML = estaAbierto ? '✕' : '☰';
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('#main-header')) {
+                if (navMenu.classList.contains('nav-open')) {
+                    navMenu.classList.remove('nav-open');
+                    menuToggleBtn.innerHTML = '☰';
+                }
+            }
         });
 
         const themeBtn = document.getElementById('dark-mode-toggle');

@@ -42,9 +42,8 @@
         nav ul li a { color: #4a4a4a; font-size: 0.95rem; font-weight: 500; }
         nav ul li a.active, nav ul li a:hover { color: #c77f0d; font-weight: bold; }
 
-        .header-actions { display: flex; align-items: center; gap: 12px; }
-        .dark-btn { background: none; border: none; cursor: pointer; font-size: 20px; line-height: 1; }
-        .mobile-menu-btn { display: none; background: none; border: none; font-size: 26px; color: #c77f0d; cursor: pointer; }
+        .dark-btn { background: none; border: none; cursor: pointer; font-size: 20px; line-height: 1; padding: 4px 8px; border-radius: 50%; }
+        .mobile-menu-btn { display: none; background: none; border: none; font-size: 26px; color: #c77f0d; cursor: pointer; width: 30px; text-align: center; }
 
         body.dark-mode { background-color: #121212 !important; color: #f5f7f8 !important; }
         body.dark-mode header,
@@ -133,17 +132,14 @@
 </head>
 <body>
 
-    <header>
+    <header id="main-header">
         <div class="nav-wrapper">
             <div class="brand-logo">
                 <img src="https://www.dropbox.com/scl/fi/7h2pubomnn102d1rap4dr/Sin-Texto-versi-n-3D.png?rlkey=nd66shyykgea25m8c6sl2pp5d&st=dg874wjl&raw=1" alt="Logo Radio Conexión">
                 <span>Radio Conexión</span>
             </div>
             
-            <div class="header-actions">
-                <button id="dark-mode-toggle" class="dark-btn">🌙</button>
-                <button class="mobile-menu-btn" id="menu-toggle">☰</button>
-            </div>
+            <button class="mobile-menu-btn" id="menu-toggle">☰</button>
 
             <nav id="nav-menu">
                 <ul>
@@ -151,6 +147,7 @@
                     <li><a href="episodios">Episodios</a></li>
                     <li><a href="suscriptores" class="active">Zona de Suscriptores</a></li>
                     <li><a href="historia">Historia</a></li>
+                    <li><button id="dark-mode-toggle" class="dark-btn">🌙</button></li>
                 </ul>
             </nav>
         </div>
@@ -213,7 +210,8 @@
                 </div>
             </section>
 
-            <section class="music-section" data-aos="fade-up">
+            <!-- ENCUESTA SIN ANIMACIÓN AOS -->
+            <section class="music-section">
                 <div style="max-width: 440px; margin: 0 auto;">
                     <h2>📊 Encuesta de la Semana</h2>
                     <p class="rc-subtitle" style="margin-bottom: 20px;">¿Qué tema te gustaría que profundicemos en el próximo episodio de Radio Conexión?</p>
@@ -522,8 +520,12 @@
 
         function mostrarContenido(nombre, apellido) {
             const campoTexto = document.getElementById("texto-bienvenida-usuario");
-            if (nombre && nombre !== "Oyente") {
-                campoTexto.innerHTML = `✓ ¡Bienvenido(a), ${nombre} ${apellido}! Conectado como suscriptor activo de Radio Conexión`;
+            const email = localStorage.getItem("usuario_radio_conexion") || "";
+            
+            if (nombre && nombre !== "Oyente" && nombre !== "undefined") {
+                campoTexto.innerHTML = `✓ ¡Bienvenido(a), ${nombre}! Conectado como suscriptor activo`;
+            } else if (email) {
+                campoTexto.innerHTML = `✓ ¡Bienvenido(a), ${email}! Conectado como suscriptor activo`;
             } else {
                 campoTexto.innerHTML = `✓ Conectado como suscriptor activo de Radio Conexión`;
             }
@@ -556,15 +558,27 @@
             document.getElementById('poll-thanks').style.display = 'none';
         }
 
-        document.addEventListener('click', function(e) {
+        const menuToggleBtn = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuToggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navMenu.classList.toggle('nav-open');
+            const estaAbierto = navMenu.classList.contains('nav-open');
+            menuToggleBtn.innerHTML = estaAbierto ? '✕' : '☰';
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('#main-header')) {
+                if (navMenu.classList.contains('nav-open')) {
+                    navMenu.classList.remove('nav-open');
+                    menuToggleBtn.innerHTML = '☰';
+                }
+            }
             if (!e.target.closest('.search-container')) {
                 const box = document.getElementById('rc-search-results');
                 if(box) box.style.display = 'none';
             }
-        });
-
-        document.getElementById('menu-toggle').addEventListener('click', () => {
-            document.getElementById('nav-menu').classList.toggle('nav-open');
         });
 
         const themeBtn = document.getElementById('dark-mode-toggle');

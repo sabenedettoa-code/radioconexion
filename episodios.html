@@ -18,7 +18,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background-color: #f5f7f8; color: #1c1c1c; line-height: 1.6; overflow-x: hidden; transition: background-color 0.3s, color 0.3s; }
         a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
-        .container { max-width: 1280px; margin: 0 auto; padding: 0 20px 140px 20px; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 20px 120px 20px; }
         h1, h2, h3, .brand-logo span { font-family: 'Unica One', sans-serif; color: #c77f0d; font-weight: bold; }
         
         .btn-custom {
@@ -41,7 +41,8 @@
         nav ul li a { color: #4a4a4a; font-size: 0.95rem; font-weight: 500; }
         nav ul li a.active, nav ul li a:hover { color: #e5a919; font-weight: bold; }
 
-        .mobile-menu-btn { display: none; background: none; border: none; font-size: 26px; color: #c77f0d; cursor: pointer; }
+        .dark-btn { background: none; border: none; cursor: pointer; font-size: 20px; line-height: 1; padding: 4px 8px; border-radius: 50%; }
+        .mobile-menu-btn { display: none; background: none; border: none; font-size: 26px; color: #c77f0d; cursor: pointer; width: 30px; text-align: center; }
 
         body.dark-mode { background-color: #121212 !important; color: #f5f7f8 !important; }
         body.dark-mode header, body.dark-mode .page-title-section, body.dark-mode .sticky-player-bar {
@@ -79,7 +80,6 @@
         .equalizer-icon span:nth-child(3) { height: 40%; animation-delay: 0s; }
         @keyframes bounce { 0%, 100% { transform: scaleY(0.4); } 50% { transform: scaleY(1); } }
 
-        /* CORRECCIÓN MENÚ HAMBURGUESA MÓVIL */
         @media (max-width: 768px) {
             header { top: 10px; margin: 10px auto; width: calc(100% - 20px); padding: 12px 20px; border-radius: 20px; }
             .mobile-menu-btn { display: block; }
@@ -93,21 +93,22 @@
 </head>
 <body>
 
-    <button id="dark-mode-toggle" style="position: fixed; top: 20px; right: 20px; z-index: 1001; background: rgba(255,255,255,0.8); border: 1px solid #cfd8dc; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; font-size: 18px;">🌙</button>
-
-    <header>
+    <header id="main-header">
         <div class="nav-wrapper">
             <div class="brand-logo">
                 <img src="https://www.dropbox.com/scl/fi/7h2pubomnn102d1rap4dr/Sin-Texto-versi-n-3D.png?rlkey=nd66shyykgea25m8c6sl2pp5d&st=dg874wjl&raw=1" alt="Logo Radio Conexión">
                 <span>Radio Conexión</span>
             </div>
+            
             <button class="mobile-menu-btn" id="menu-toggle">☰</button>
+
             <nav id="nav-menu">
                 <ul>
                     <li><a href="inicio">Inicio</a></li>
                     <li><a href="episodios" class="active">Episodios</a></li>
                     <li><a href="suscriptores">Zona de Suscriptores</a></li>
                     <li><a href="historia">Historia</a></li>
+                    <li><button id="dark-mode-toggle" class="dark-btn">🌙</button></li>
                 </ul>
             </nav>
         </div>
@@ -117,10 +118,9 @@
         <div class="page-title-section" data-aos="zoom-in" data-aos-delay="150">
             <h1>Episodios</h1>
             <p>Disfruta de nuestro catálogo de contenidos sonoros grabados en alta definición.<br><br>
-               Para escuchar todos los episodios, <a href="inicio#subscription-form" class="desc-link">suscríbete</a> y tendrás acceso a la carpeta con todos los episodios; desde el primero hasta el más reciente.
+               Para escuchar todos los episodios, <a href="inicio#subscription-form" class="desc-link">suscríbete</a> y tendrás acceso a la carpeta con todos los episodios; desde el primero hasta el más reciente.[cite: 1]
             </p>
 
-            <!-- REPRODUCTOR EMBEBIDO DE SPOTIFY -->
             <div style="margin-top: 35px; border-radius: 16px; overflow: hidden; padding: 3px; background: #c77f0d; box-shadow: 0 8px 24px rgba(199, 127, 13, 0.25); transition: all 0.3s ease-out;" data-aos="zoom-in">
                 <iframe id="spotify-iframe" style="border-radius:12px; display: block;" 
                         src="https://open.spotify.com/embed/show/6CDimSvVahr4PZSiypB0vp?utm_source=generator&theme=0" 
@@ -150,8 +150,23 @@
     <script>
         AOS.init({ duration: 900, once: false, mirror: true, easing: 'ease-out-back' });
 
-        document.getElementById('menu-toggle').addEventListener('click', () => {
-            document.getElementById('nav-menu').classList.toggle('nav-open');
+        const menuToggleBtn = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuToggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navMenu.classList.toggle('nav-open');
+            const estaAbierto = navMenu.classList.contains('nav-open');
+            menuToggleBtn.innerHTML = estaAbierto ? '✕' : '☰';
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('#main-header')) {
+                if (navMenu.classList.contains('nav-open')) {
+                    navMenu.classList.remove('nav-open');
+                    menuToggleBtn.innerHTML = '☰';
+                }
+            }
         });
 
         const themeBtn = document.getElementById('dark-mode-toggle');
