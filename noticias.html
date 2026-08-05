@@ -5,14 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <title>Episodios | Radio Conexión</title>
+    <title>Noticias | Radio Conexión</title>
     
     <link rel="icon" type="image/png" href="https://www.dropbox.com/scl/fi/7h2pubomnn102d1rap4dr/Sin-Texto-versi-n-3D.png?rlkey=nd66shyykgea25m8c6sl2pp5d&st=dg874wjl&raw=1">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unica+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -56,12 +55,58 @@
         .page-title-section {
             background: #ffffff; border-radius: 12px; padding: 40px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.02); border: 1px solid rgba(207,216,220,0.4);
-            text-align: center; max-width: 850px; margin: 0 auto 60px auto;
+            text-align: center; max-width: 1000px; margin: 0 auto 60px auto;
         }
         .page-title-section h1 { font-size: 34px; margin-bottom: 20px; }
-        .page-title-section p { color: #4a4a4a; font-size: 15px; max-width: 700px; margin: 0 auto; line-height: 1.8; }
-        .desc-link { color: #c77f0d; text-decoration: underline; font-weight: 600; }
-        .desc-link:hover { color: #b8820a; }
+        .page-title-section p { color: #4a4a4a; font-size: 15px; max-width: 700px; margin: 0 auto 30px auto; line-height: 1.8; }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            text-align: left;
+        }
+        .news-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(207,216,220,0.4);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+        }
+        .news-img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            background-color: #eef2f5;
+        }
+        .news-card h3 {
+            font-size: 15px;
+            margin-bottom: 12px;
+            color: #1c1c1c;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+        .news-date {
+            font-size: 11px;
+            color: #c77f0d;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+        }
+        body.dark-mode .news-card {
+            background: rgba(28, 28, 28, 0.85) !important;
+            border-color: rgba(255, 255, 255, 0.1) !important;
+        }
+        body.dark-mode .news-card h3 {
+            color: #f5f7f8 !important;
+        }
 
         .sticky-player-bar {
             position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: calc(100% - 30px); max-width: 600px;
@@ -105,8 +150,8 @@
             <nav id="nav-menu">
                 <ul>
                     <li><a href="inicio">Inicio</a></li>
-                    <li><a href="episodios" class="active">Episodios</a></li>
-                    <li><a href="noticias">Noticias</a></li>
+                    <li><a href="episodios">Episodios</a></li>
+                    <li><a href="noticias" class="active">Noticias</a></li>
                     <li><a href="suscriptores">Suscriptores</a></li>
                     <li><a href="historia">Historia</a></li>
                     <li><button id="dark-mode-toggle" class="dark-btn">🌙</button></li>
@@ -116,22 +161,12 @@
     </header>
 
     <main class="container">
-        <div class="page-title-section" data-aos="zoom-in" data-aos-delay="150">
-            <h1>Episodios</h1>
-            <p>Disfruta de nuestro catálogo de contenidos sonoros grabados en alta definición.<br><br>
-               Para escuchar todos los episodios, <a href="inicio#subscription-form" class="desc-link">suscríbete</a> y tendrás acceso a la carpeta con todos los episodios; desde el primero hasta el más reciente.[cite: 1]
-            </p>
+        <div class="page-title-section">
+            <h1>Noticias</h1>
+            <p>Titulares de ciencia, medio ambiente, cultura e innovación directamente desde Google News en tiempo real.</p>
 
-            <div style="margin-top: 35px; border-radius: 16px; overflow: hidden; padding: 3px; background: #c77f0d; box-shadow: 0 8px 24px rgba(199, 127, 13, 0.25); transition: all 0.3s ease-out;" data-aos="zoom-in">
-                <iframe id="spotify-iframe" style="border-radius:12px; display: block;" 
-                        src="https://open.spotify.com/embed/show/6CDimSvVahr4PZSiypB0vp?utm_source=generator&theme=0" 
-                        width="100%" 
-                        height="232" 
-                        frameBorder="0" 
-                        allowfullscreen="" 
-                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-                        loading="lazy">
-                </iframe>
+            <div id="news-feed" class="news-grid">
+                <p style="grid-column: 1/-1; text-align: center; color: #8e8e8e;">Cargando Google News...</p>
             </div>
         </div>
     </main>
@@ -147,18 +182,15 @@
         <a href="inicio#subscription-form" class="btn-custom" style="padding: 6px 14px; font-size: 11px;">Suscribirse</a>
     </div>
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 900, once: false, mirror: true, easing: 'ease-out-back' });
-
+        // Menú responsive y Modo Oscuro
         const menuToggleBtn = document.getElementById('menu-toggle');
         const navMenu = document.getElementById('nav-menu');
 
         menuToggleBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             navMenu.classList.toggle('nav-open');
-            const estaAbierto = navMenu.classList.contains('nav-open');
-            menuToggleBtn.innerHTML = estaAbierto ? '✕' : '☰';
+            menuToggleBtn.innerHTML = navMenu.classList.contains('nav-open') ? '✕' : '☰';
         });
 
         document.addEventListener('click', (e) => {
@@ -181,6 +213,83 @@
             document.body.classList.add('dark-mode');
             themeBtn.innerText = '☀️';
         }
+
+        // Filtro de violencia, delincuencia y contenido negativo
+        const palabrasProhibidas = [
+            'asesinat', 'homicid', 'delincuen', 'robo', 'asalto', 'crimen', 
+            'secuestro', 'detenido', 'carabinero', 'polic', 'balead', 'dispar', 
+            'pdi', 'fiscal', 'violenc', 'cadáver', 'muert', 'droga', 'narco', 
+            'emergencia', 'explosi', 'incendio', 'fallece', 'tragedia', 'irregularidades'
+        ];
+
+        // Feed RSS de Google News (Búsqueda temática de tecnología, ciencia y medio ambiente)
+        const googleNewsUrl = 'https://news.google.com/rss/search?q=medio+ambiente+OR+ciencia+OR+tecnologia+OR+innovacion&hl=es-419&gl=CL&ceid=CL:es-419';
+        const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(googleNewsUrl)}`;
+
+        fetch(proxyUrl)
+            .then(res => res.text())
+            .then(xmlString => {
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(xmlString, "text/xml");
+                const items = xmlDoc.querySelectorAll("item");
+                
+                const container = document.getElementById('news-feed');
+                container.innerHTML = '';
+
+                let procesadas = 0;
+
+                items.forEach((item) => {
+                    if (procesadas >= 9) return;
+
+                    const title = item.querySelector("title") ? item.querySelector("title").textContent : '';
+                    const link = item.querySelector("link") ? item.querySelector("link").textContent : '#';
+                    const pubDate = item.querySelector("pubDate") ? item.querySelector("pubDate").textContent : '';
+
+                    const tituloMin = title.toLowerCase();
+                    const esInapropiada = palabrasProhibidas.some(p => tituloMin.includes(p));
+
+                    if (!esInapropiada && title) {
+                        const dateObj = new Date(pubDate);
+                        const dateStr = !isNaN(dateObj) ? dateObj.toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric' }) : 'Reciente';
+
+                        // Creamos la tarjeta sin imagen mientras Microlink obtiene la foto oficial de la noticia
+                        const card = document.createElement('div');
+                        card.className = 'news-card';
+                        const cardId = `img-news-${procesadas}`;
+                        
+                        card.innerHTML = `
+                            <div>
+                                <img id="${cardId}" src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80" alt="Noticia Google News" class="news-img">
+                                <span class="news-date">📰 ${dateStr}</span>
+                                <h3>${title}</h3>
+                            </div>
+                            <a href="${link}" target="_blank" rel="noopener noreferrer" class="btn-custom" style="padding: 6px 14px; font-size: 11px; text-align: center; margin-top: 15px;">Leer Noticia</a>
+                        `;
+                        container.appendChild(card);
+
+                        // Obtención de la imagen original del artículo mediante Microlink
+                        fetch(`https://api.microlink.io/?url=${encodeURIComponent(link)}`)
+                            .then(r => r.json())
+                            .then(meta => {
+                                if (meta.status === 'success' && meta.data && meta.data.image && meta.data.image.url) {
+                                    const imgElem = document.getElementById(cardId);
+                                    if (imgElem) imgElem.src = meta.data.image.url;
+                                }
+                            })
+                            .catch(() => {});
+
+                        procesadas++;
+                    }
+                });
+
+                if (procesadas === 0) {
+                    container.innerHTML = '<p style="grid-column: 1/-1; text-align: center;">No hay noticias para mostrar en este momento.</p>';
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                document.getElementById('news-feed').innerHTML = '<p style="grid-column: 1/-1; text-align: center;">Error al cargar las noticias de Google News.</p>';
+            });
     </script>
 </body>
 </html>
