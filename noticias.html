@@ -874,25 +874,38 @@
             }
 
             function getNewsFromRss2Json() {
-                var url = "https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(GOOGLE_NEWS_RSS) + "&_=" + Date.now();
+                return new Promise(function (resolve, reject) {
+                    var callbackName = "radioConexionNewsCallback_" + Date.now() + "_" + Math.floor(Math.random() * 100000);
+                    var script = document.createElement("script");
+                    var timeoutId;
+                    var url;
 
-                return fetch(url, { cache: "no-store" })
-                    .then(function (response) {
-                        if (!response.ok) {
-                            throw new Error("RSS2JSON no disponible");
+                    function cleanup() {
+                        if (timeoutId) {
+                            window.clearTimeout(timeoutId);
                         }
-                        return response.json();
-                    })
-                    .then(function (data) {
-                        var results;
+                        if (script.parentNode) {
+                            script.parentNode.removeChild(script);
+                        }
+                        try {
+                            delete window[callbackName];
+                        } catch (e) {
+                            window[callbackName] = undefined;
+                        }
+                    }
+
+                    window[callbackName] = function (data) {
+                        var results = [];
                         var i;
                         var item;
 
-                        if (data.status !== "ok" || !Array.isArray(data.items) || data.items.length === 0) {
-                            throw new Error("RSS sin noticias");
+                        cleanup();
+
+                        if (!data || data.status !== "ok" || !data.items || !data.items.length) {
+                            reject(new Error("RSS2JSON no devolvió noticias"));
+                            return;
                         }
 
-                        results = [];
                         for (i = 0; i < data.items.length; i += 1) {
                             item = data.items[i];
                             results.push({
@@ -903,8 +916,29 @@
                                 summary: item.description || ""
                             });
                         }
-                        return results;
-                    });
+
+                        resolve(results);
+                    };
+
+                    script.onerror = function () {
+                        cleanup();
+                        reject(new Error("No fue posible conectar con RSS2JSON"));
+                    };
+
+                    timeoutId = window.setTimeout(function () {
+                        cleanup();
+                        reject(new Error("RSS2JSON tardó demasiado en responder"));
+                    }, 12000);
+
+                    url = "https://api.rss2json.com/v1/api.json"
+                        + "?rss_url=" + encodeURIComponent(GOOGLE_NEWS_RSS)
+                        + "&callback=" + encodeURIComponent(callbackName)
+                        + "&_=" + Date.now();
+
+                    script.src = url;
+                    script.async = true;
+                    document.head.appendChild(script);
+                });
             }
 
             function getNewsFromAllOrigins() {
