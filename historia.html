@@ -7,13 +7,12 @@
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="theme-color" content="#d99614">
     <title>Radio Conexión - Conectados Con Tus Sentidos</title>
-    
+
     <link rel="icon" type="image/png" href="https://www.dropbox.com/scl/fi/7h2pubomnn102d1rap4dr/Sin-Texto-versi-n-3D.png?rlkey=nd66shyykgea25m8c6sl2pp5d&st=dg874wjl&raw=1">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unica+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
     <style>
         * {
@@ -460,39 +459,45 @@
         } catch(e) {}
     </script>
     <style>html.rc-dark-preload body{background:#101216!important}</style>
+    <meta name="description" content="Conoce la historia de Radio Conexión y las palabras de su fundador.">
+    <meta property="og:description" content="Conoce la historia de Radio Conexión y las palabras de su fundador.">
+    <link rel="stylesheet" href="assets/site.css">
+    <link rel="manifest" href="manifest.json">
+    <script src="assets/site.js" defer></script>
 </head>
 <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
     <header id="main-header">
         <div class="nav-wrapper">
-            <a class="brand-logo" href="inicio" aria-label="Radio Conexión, ir al inicio">
+            <a class="brand-logo" href="inicio.html" aria-label="Radio Conexión, ir al inicio">
                 <img src="https://www.dropbox.com/scl/fi/7h2pubomnn102d1rap4dr/Sin-Texto-versi-n-3D.png?rlkey=nd66shyykgea25m8c6sl2pp5d&st=dg874wjl&raw=1" alt="Logo Radio Conexión">
                 <div class="brand-text">
                     <span class="brand-title">Radio Conexión</span>
                     <span class="brand-tagline">Conectados Con Tus Sentidos</span>
                 </div>
             </a>
-            
+
             <button type="button" class="mobile-menu-btn" id="menu-toggle" aria-label="Abrir menú de navegación" aria-controls="nav-menu" aria-expanded="false">☰</button>
 
             <nav id="nav-menu">
                 <ul>
-                    <li><a href="inicio">Inicio</a></li>
-                    <li><a href="episodios">Episodios</a></li>
-                    <li><a href="noticias">Noticias</a></li>
-                    <li><a href="suscriptores">Suscriptores</a></li>
-                    <li><a href="historia" class="active">Historia</a></li>
+                    <li><a href="inicio.html">Inicio</a></li>
+                    <li><a href="episodios.html">Episodios</a></li>
+                    <li><a href="noticias.html">Noticias</a></li>
+                    <li><a href="suscriptores.html">Suscriptores</a></li>
+                    <li><a href="historia.html" class="active" aria-current="page">Historia</a></li>
                     <li><button type="button" id="dark-mode-toggle" class="dark-btn" aria-label="Cambiar modo de color" title="Cambiar modo claro/oscuro">🌙</button></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main class="container">
-        
-        <section class="history-section" data-aos="fade-up">
+    <main class="container" id="contenido" tabindex="-1">
+
+        <section class="history-section">
             <h1>Nuestra Historia</h1>
-            
+
             <div class="history-content">
                 <p>
                     Radio Conexión nació con un propósito claro: ser un faro de luz en medio de la saturación informativa actual. Convencidos de que el mundo está lleno de acciones inspiradoras que merecen ser contadas, decidimos crear un espacio dedicado exclusivamente al periodismo positivo.
@@ -508,18 +513,18 @@
             </div>
         </section>
 
-        <section class="founder-section" data-aos="fade-up">
+        <section class="founder-section">
             <h2>Palabras de su fundador</h2>
-            
+
             <div class="founder-content">
                 <p>
-                    Marzo es un mes muy especial para la radio, ¿por qué?, porque en este mes comencé a grabar los primeros episodios de Radio Conexión. 
+                    Marzo es un mes muy especial para la radio, ¿por qué?, porque en este mes comencé a grabar los primeros episodios de Radio Conexión.
                 </p>
                 <p>
-                    Todo inició en plena cuarentena, durante la pandemia (año 2020), cuando un día como cualquiera, prendo mi computador, abro la grabadora de voz y me doy cuenta que puedo poner música y se escuchaba "bien". Primero, compartí los primeros episodios a mi familia más cercana. Pero habían algunos problemas; primero, mientras ponía las canciones se escuchaba todo el ruido de fondo, lo cual era bastante desagradable, más aún cuando estabamos todos encerrados. 
+                    Todo inició en plena cuarentena, durante la pandemia (año 2020), cuando un día como cualquiera, prendo mi computador, abro la grabadora de voz y me doy cuenta que puedo poner música y se escuchaba "bien". Primero, compartí los primeros episodios a mi familia más cercana. Pero habían algunos problemas; primero, mientras ponía las canciones se escuchaba todo el ruido de fondo, lo cual era bastante desagradable, más aún cuando estabamos todos encerrados.
                 </p>
                 <p>
-                    Resulta que una persona muy generosa me recomendó el programa "Audacity" y solucionó ese problema. Dejé de usar la grabadora y comencé a usar Audacity para poder colocar música de mucha, pero mucha mejor calidad y sin ruido externo de fondo. Además, evolucionamos en cuanto a música de fondo, después de varios meses, descubrí cómo hacerlo, y desde ese día los episodios son mucho más entretenidos y alegres. 
+                    Resulta que una persona muy generosa me recomendó el programa "Audacity" y solucionó ese problema. Dejé de usar la grabadora y comencé a usar Audacity para poder colocar música de mucha, pero mucha mejor calidad y sin ruido externo de fondo. Además, evolucionamos en cuanto a música de fondo, después de varios meses, descubrí cómo hacerlo, y desde ese día los episodios son mucho más entretenidos y alegres.
                 </p>
                 <p>
                     La siguiente evolución fue el abrir la página web, para que puedas estar más conectado junto a tu radio. Modificaciones en el logo y lema de Radio Conexión. Eso y más cambios, ha tenido la radio. Me enorgullece un montón que Radio Conexión ha perdurado durante seis años y ha evolucionado un montón.
@@ -527,7 +532,7 @@
                 <p>
                     Gracias querida audiencia por ser parte de no solo una radio, sino una gran comunidad. Gracias por escuchar los episodios de principio a fin.
                 </p>
-                
+
                 <div class="signature-block">
                     <div class="signature-name">Santiago Benedetto Abarca</div>
                     <div class="signature-title">
@@ -539,26 +544,20 @@
         </section>
 
     </main>
+    <footer class="site-footer"><a href="inicio.html">Radio Conexión</a><p>Conectados con tus sentidos.</p><a href="historia.html">Nuestra historia</a><span aria-hidden="true"> · </span><a href="inicio.html#subscription-form">Únete a la comunidad</a></footer>
 
     <div id="sticky-audio-player" class="sticky-player-bar">
         <div class="player-info">
             <div class="equalizer-icon"><span></span><span></span><span></span></div>
             <div class="player-text">
                 <strong id="sticky-title">Radio Conexión</strong>
-                <small id="sticky-subtitle">🎙️ Episodio 97 - ¡Novedades!</small>
+                <small id="sticky-subtitle">Episodios · Escucha a tu ritmo</small>
             </div>
         </div>
-        <a href="episodios" class="btn-custom" style="padding: 6px 16px; font-size: 12px;">Escuchar</a>
+        <a href="episodios.html" class="btn-custom" style="padding: 6px 16px; font-size: 12px;">Escuchar</a>
     </div>
-
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        AOS.init({
-            duration: 900,         
-            once: true,           
-            mirror: false,          
-            easing: 'ease-out-cubic' 
-        });
+
 
         const menuToggleBtn = document.getElementById('menu-toggle');
         const navMenu = document.getElementById('nav-menu');

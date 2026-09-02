@@ -584,11 +584,17 @@
             }
         }
     </style>
+    <meta name="description" content="Consulta los titulares de actualidad de Chile y el mundo en Radio Conexión.">
+    <meta property="og:description" content="Consulta los titulares de actualidad de Chile y el mundo en Radio Conexión.">
+    <link rel="stylesheet" href="assets/site.css">
+    <link rel="manifest" href="manifest.json">
+    <script src="assets/site.js" defer></script>
 </head>
 <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
     <header id="main-header">
         <div class="nav-wrapper">
-            <a class="brand-logo" href="inicio" aria-label="Radio Conexión, ir al inicio">
+            <a class="brand-logo" href="inicio.html" aria-label="Radio Conexión, ir al inicio">
                 <img src="https://www.dropbox.com/scl/fi/7h2pubomnn102d1rap4dr/Sin-Texto-versi-n-3D.png?rlkey=nd66shyykgea25m8c6sl2pp5d&st=dg874wjl&raw=1" alt="Logo Radio Conexión">
                 <div class="brand-text">
                     <span class="brand-title">Radio Conexión</span>
@@ -600,18 +606,18 @@
 
             <nav id="nav-menu" aria-label="Navegación principal">
                 <ul>
-                    <li><a href="inicio">Inicio</a></li>
-                    <li><a href="episodios">Episodios</a></li>
-                    <li><a href="noticias" class="active" aria-current="page">Noticias</a></li>
-                    <li><a href="suscriptores">Suscriptores</a></li>
-                    <li><a href="historia">Historia</a></li>
+                    <li><a href="inicio.html">Inicio</a></li>
+                    <li><a href="episodios.html">Episodios</a></li>
+                    <li><a href="noticias.html" class="active" aria-current="page" aria-current="page">Noticias</a></li>
+                    <li><a href="suscriptores.html">Suscriptores</a></li>
+                    <li><a href="historia.html">Historia</a></li>
                     <li><button type="button" id="dark-mode-toggle" class="dark-btn" aria-label="Cambiar modo de color" title="Cambiar modo claro u oscuro">🌙</button></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main class="container">
+    <main class="container" id="contenido" tabindex="-1">
         <section class="page-title-section">
             <h1>Noticias de Última Hora</h1>
             <p>Sigue los principales titulares de actualidad. La portada se actualiza automáticamente con Google News.</p>
@@ -634,16 +640,17 @@
             </div>
         </section>
     </main>
+    <footer class="site-footer"><a href="inicio.html">Radio Conexión</a><p>Conectados con tus sentidos.</p><a href="historia.html">Nuestra historia</a><span aria-hidden="true"> · </span><a href="inicio.html#subscription-form">Únete a la comunidad</a></footer>
 
     <div class="sticky-player-bar">
         <div class="player-info">
             <div class="equalizer-icon" aria-hidden="true"><span></span><span></span><span></span></div>
             <div class="player-text">
                 <strong>Radio Conexión</strong>
-                <small>🎙️ Episodio 97 - ¡Novedades!</small>
+                <small>Episodios · Escucha a tu ritmo</small>
             </div>
         </div>
-        <a href="inicio#subscription-form" class="btn-custom">Suscribirse</a>
+        <a href="inicio.html#subscription-form" class="btn-custom">Suscribirse</a>
     </div>
 
     <script>
