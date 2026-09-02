@@ -10,7 +10,7 @@ Sitio estático en español, compatible con GitHub Pages y Vercel. La portada es
 - Suscriptores: acceso, solicitudes de canciones, mensajes y fonoteca.
 - Historia: información de la radio y su fundador.
 
-Los ajustes visuales compartidos están en `assets/site.css`; las mejoras de accesibilidad están en `assets/site.js`. No se necesita compilar ni instalar dependencias para publicar estos archivos.
+Los ajustes visuales compartidos están en `site.css`; las mejoras de accesibilidad están en `site.js`. No se necesita compilar ni instalar dependencias para publicar estos archivos.
 
 ## Servicios externos
 
