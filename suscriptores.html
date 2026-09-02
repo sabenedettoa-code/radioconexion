@@ -6,13 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>Suscriptores | Radio Conexión</title>
-    
+
     <link rel="icon" type="image/png" href="https://www.dropbox.com/scl/fi/7h2pubomnn102d1rap4dr/Sin-Texto-versi-n-3D.png?rlkey=nd66shyykgea25m8c6sl2pp5d&st=dg874wjl&raw=1">
 
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unica+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -20,7 +19,7 @@
         a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
         .container { max-width: 1280px; margin: 0 auto; padding: 0 20px 120px 20px; }
         h1, h2, h3, .brand-logo span, .music-box h2 { font-family: 'Unica One', sans-serif; color: #c77f0d; font-weight: bold; }
-        
+
         .btn-custom {
             background-color: #e5a919; color: #1c1c1c; padding: 12px 35px; border-radius: 25px;
             font-weight: bold; display: inline-block; box-shadow: 0 4px 10px rgba(229, 169, 25, 0.2);
@@ -84,7 +83,7 @@
         .form-group label { display: block; color: #4a4a4a; font-weight: 600; font-size: 13px; text-align: left; margin-bottom: -4px; }
         .form-group input[type="text"] { height: 40px; padding: 0 10px; border: 1px solid #cfd8dc; border-radius: 6px; outline: none; font-family: 'Inter', sans-serif; background-color: #f5f7f8; font-size: 14.5px; }
         .form-group input:focus { border-color: #e5a919; background-color: #ffffff; }
-        
+
         .rc-search-results-box { position: absolute; top: 70px; left: 0; width: 100%; max-height: 200px; overflow-y: auto; background: #ffffff; border: 1px solid #cfd8dc; border-radius: 6px; z-index: 999; box-shadow: 0 6px 15px rgba(0,0,0,0.06); display: none; }
         .rc-search-item { padding: 10px 12px; text-align: left; font-size: 13.5px; cursor: pointer; border-bottom: 1px solid #f5f7f8; display: flex; align-items: center; overflow: hidden; }
         .rc-search-item:hover { background-color: #f5f7f8; color: #c77f0d; }
@@ -95,9 +94,6 @@
         .rc-selected-item-row button { background: none; border: none; color: #c5221f; font-weight: bold; cursor: pointer; font-size: 15px; padding: 0 4px; flex-shrink: 0; }
 
         .seccion-oculta { display: none !important; }
-
-        .btn-poll-option { background: #f5f7f8; border: 1px solid #cfd8dc; padding: 12px 18px; border-radius: 8px; font-size: 14px; font-weight: 500; color: #1c1c1c; cursor: pointer; text-align: left; transition: all 0.3s ease; }
-        .btn-poll-option:hover { border-color: #e5a919; background: #ffffff; color: #c77f0d; }
 
         .modal-backdrop { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); backdrop-filter: blur(5px); display: flex; align-items: center; justify-content: center; z-index: 10000; }
         .modal-content { background: #ffffff; border-radius: 16px; padding: 30px; max-width: 400px; width: 90%; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.2); animation: zoomIn 0.3s ease; }
@@ -129,8 +125,14 @@
             .page-title-section h1, .music-section h2 { font-size: 24pt; }
         }
     </style>
+    <meta name="description" content="Accede a la fonoteca, pide tus canciones y comparte tus mensajes con Radio Conexión.">
+    <meta property="og:description" content="Accede a la fonoteca, pide tus canciones y comparte tus mensajes con Radio Conexión.">
+    <link rel="stylesheet" href="site.css">
+    <link rel="manifest" href="manifest.json">
+    <script src="site.js" defer></script>
 </head>
 <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
     <header id="main-header">
         <div class="nav-wrapper">
@@ -138,37 +140,37 @@
                 <img src="https://www.dropbox.com/scl/fi/7h2pubomnn102d1rap4dr/Sin-Texto-versi-n-3D.png?rlkey=nd66shyykgea25m8c6sl2pp5d&st=dg874wjl&raw=1" alt="Logo Radio Conexión">
                 <span>Radio Conexión</span>
             </div>
-            
+
             <button class="mobile-menu-btn" id="menu-toggle">☰</button>
 
             <nav id="nav-menu">
                 <ul>
-                    <li><a href="inicio">Inicio</a></li>
-                    <li><a href="episodios">Episodios</a></li>
-                    <li><a href="noticias">Noticias</a></li>
-                    <li><a href="suscriptores" class="active">Suscriptores</a></li>
-                    <li><a href="historia">Historia</a></li>
+                    <li><a href="inicio.html">Inicio</a></li>
+                    <li><a href="episodios.html">Episodios</a></li>
+                    <li><a href="noticias.html">Noticias</a></li>
+                    <li><a href="suscriptores.html" class="active" aria-current="page">Suscriptores</a></li>
+                    <li><a href="historia.html">Historia</a></li>
                     <li><button id="dark-mode-toggle" class="dark-btn">🌙</button></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main class="container">
+    <main class="container" id="contenido" tabindex="-1">
 
-        <div id="portal-login" class="page-title-section" data-aos="zoom-in" data-aos-delay="150">
+        <div id="portal-login" class="page-title-section">
             <span style="font-size: 45px; display: block; margin-bottom: 10px;">🔒</span>
             <h1>Espacio Exclusivo</h1>
-            <p>Para acceder a la fonoteca completa de episodios, votar en nuestras encuestas y solicitar tus canciones, ingresa tu correo de suscriptor.</p>
-            
+            <p>Para acceder a la fonoteca completa de episodios y solicitar tus canciones, ingresa tu correo de suscriptor.</p>
+
             <div class="login-box">
                 <form id="form-login-privado">
                     <input type="email" id="email-privado-input" class="input-privado" placeholder="ejemplo@correo.com" required>
                     <button type="submit" id="btn-entrar-privado" class="btn-custom" style="width: 100%;">Ingresar al Espacio</button>
                 </form>
-                
+
                 <p style="margin-top: 20px; font-size: 14px; color: #4a4a4a;">
-                    ¿Aún no te registras? <a href="inicio#subscription-form" style="color: #c77f0d; font-weight: bold; text-decoration: underline;">Regístrate aquí</a>
+                    ¿Aún no te registras? <a href="inicio.html#subscription-form" style="color: #c77f0d; font-weight: bold; text-decoration: underline;">Regístrate aquí</a>
                 </p>
 
                 <div id="error-login-privado" style="display: none; margin-top: 15px; padding: 12px; background-color: #fce8e6; color: #c5221f; border-radius: 8px; font-weight: 600; text-align: center; border: 1px solid #fad2cf;"></div>
@@ -176,7 +178,7 @@
         </div>
 
         <div id="portal-abierto" class="seccion-oculta">
-            
+
             <div class="barra-bienvenida">
                 <span id="texto-bienvenida-usuario">✓ Conectado como suscriptor activo</span>
                 <button onclick="cerrarSesion()" class="btn-logout">Cerrar Sesión</button>
@@ -186,7 +188,7 @@
                 <div style="max-width: 440px; margin: 0 auto;">
                     <h2>Pide tus Canciones</h2>
                     <p class="rc-subtitle" id="rc-music-desc" style="margin-bottom: 25px;">Selecciona tus canciones favoritas y se enviarán directo a la lista para el próximo episodio.</p>
-                    
+
                     <div id="rc-step-selection">
                         <div class="form-group search-container">
                             <label for="rc-music-search">🔍 Buscar cualquier canción o artista existente</label>
@@ -211,35 +213,17 @@
                 </div>
             </section>
 
-            <!-- ENCUESTA SIN ANIMACIÓN AOS -->
-            <section class="music-section">
-                <div style="max-width: 440px; margin: 0 auto;">
-                    <h2>📊 Encuesta de la Semana</h2>
-                    <p class="rc-subtitle" style="margin-bottom: 20px;">¿Qué tema te gustaría que profundicemos en el próximo episodio de Radio Conexión?</p>
-
-                    <div id="poll-options" style="display: flex; flex-direction: column; gap: 10px;">
-                        <button class="btn-poll-option" onclick="votarEncuesta('🌱 Innovación y Cuidado del Medio Ambiente')">🌱 Innovación y Cuidado del Medio Ambiente</button>
-                        <button class="btn-poll-option" onclick="votarEncuesta('🧠 Salud Mental y Bienestar Emocional')">🧠 Salud Mental y Bienestar Emocional</button>
-                        <button class="btn-poll-option" onclick="votarEncuesta('🚀 Historias de Emprendimiento Local')">🚀 Historias de Emprendimiento Local</button>
-                    </div>
-
-                    <div id="poll-thanks" style="display: none; text-align: center; margin-top: 15px; color: #137333; font-weight: 600;">
-                        ¡Gracias por tu voto! Tendremos en cuenta tu opinión para el contenido de la pauta.
-                    </div>
-                </div>
-            </section>
-
             <section class="music-section">
                 <div style="max-width: 440px; margin: 0 auto;">
                     <h2>Deja tu mensaje aquí</h2>
                     <p class="rc-subtitle" id="rc-msg-desc" style="margin-bottom: 25px;">Sugerencias, comentarios o proponer temas nuevos. ¡Estaremos contentos de leerte!</p>
-                    
+
                     <form id="rc-user-msg-form" class="form-group">
                         <div style="display: flex; flex-direction: column; gap: 8px; text-align: left;">
                             <label for="rc-txt-mensaje" style="color: #4a4a4a; font-weight: 600; font-size: 13px;">Escribe tu comentario o mensaje para la cabina:</label>
                             <textarea id="rc-txt-mensaje" rows="4" placeholder="Escribe aquí lo que quieras compartir con Radio Conexión..." required style="width: 100%; padding: 12px; border: 1px solid #cfd8dc; border-radius: 6px; outline: none; font-family: 'Inter', sans-serif; background-color: #f5f7f8; font-size: 14.5px; resize: vertical; min-height: 80px;"></textarea>
                         </div>
-                        
+
                         <button type="submit" id="rc-btn-send-msg" class="btn-custom" style="width: 100%; margin-top: 15px;">Enviar mi mensaje</button>
                     </form>
 
@@ -254,22 +238,23 @@
                 <span style="font-size: 40px; display: block; margin-bottom: 10px;">📂</span>
                 <h2>Fonoteca Completa</h2>
                 <p>Disfruta de nuestro catálogo completo en la nube con acceso directo para escuchar y descargar los episodios.</p>
-                <a class="btn-custom" href="https://drive.google.com/drive/folders/1IBhmKNoRWbFchAWPRr_tiHGqgczcGu1Y?usp=drive_link" target="_blank">ABRIR CARPETA DE EPISODIOS</a>
+                <a class="btn-custom" href="https://drive.google.com/drive/folders/1IBhmKNoRWbFchAWPRr_tiHGqgczcGu1Y?usp=drive_link" target="_blank" rel="noopener noreferrer">ABRIR CARPETA DE EPISODIOS</a>
             </div>
 
         </div>
 
     </main>
+    <footer class="site-footer"><a href="inicio.html">Radio Conexión</a><p>Conectados con tus sentidos.</p><a href="historia.html">Nuestra historia</a><span aria-hidden="true"> · </span><a href="inicio.html#subscription-form">Únete a la comunidad</a></footer>
 
     <div id="sticky-audio-player" class="sticky-player-bar">
         <div class="player-info">
             <div class="equalizer-icon"><span></span><span></span><span></span></div>
             <div class="player-text">
                 <strong id="sticky-title">Radio Conexión</strong>
-                <small id="sticky-subtitle">🎙️ Episodio 97 - ¡Novedades!</small>
+                <small id="sticky-subtitle">Episodios · Escucha a tu ritmo</small>
             </div>
         </div>
-        <a href="episodios" class="btn-custom" style="padding: 6px 14px; font-size: 11px;">Escuchar</a>
+        <a href="episodios.html" class="btn-custom" style="padding: 6px 14px; font-size: 11px;">Escuchar</a>
     </div>
 
     <div id="custom-modal" class="modal-backdrop" style="display: none;">
@@ -350,7 +335,7 @@
         function buscarCancionesGlobales() {
             const query = document.getElementById('rc-music-search').value.trim();
             const resultsBox = document.getElementById('rc-search-results');
-            
+
             if (!query || query.length < 2) {
                 resultsBox.innerHTML = '';
                 resultsBox.style.display = 'none';
@@ -485,30 +470,6 @@
             });
         }
 
-        function votarEncuesta(opcionSeleccionada) {
-            const email = localStorage.getItem("usuario_radio_conexion") || "Oyente Anónimo";
-
-            document.getElementById('poll-options').style.display = 'none';
-            document.getElementById('poll-thanks').style.display = 'block';
-
-            const datos = new URLSearchParams();
-            datos.append('accion', 'votar_encuesta');
-            datos.append('email', email);
-            datos.append('voto', opcionSeleccionada);
-
-            fetch(scriptBaseUrl, {
-                method: 'POST',
-                body: datos,
-                mode: 'no-cors',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-            })
-            .then(() => {
-                abrirModal('¡Voto Registrado!', 'Muchas gracias por participar en la encuesta de esta semana.');
-            })
-            .catch(() => {
-                alert('Error al registrar tu voto.');
-            });
-        }
 
         function abrirModal(t, m) {
             document.getElementById('modal-title').innerText = t;
@@ -522,13 +483,13 @@
         function mostrarContenido(nombre, apellido) {
             const campoTexto = document.getElementById("texto-bienvenida-usuario");
             const email = localStorage.getItem("usuario_radio_conexion") || "";
-            
+
             if (nombre && nombre !== "Oyente" && nombre !== "undefined") {
-                campoTexto.innerHTML = `✓ ¡Bienvenido(a), ${nombre}! Conectado como suscriptor activo`;
+                campoTexto.textContent = `✓ ¡Bienvenido(a), ${nombre}! Conectado como suscriptor activo`;
             } else if (email) {
-                campoTexto.innerHTML = `✓ ¡Bienvenido(a), ${email}! Conectado como suscriptor activo`;
+                campoTexto.textContent = `✓ ¡Bienvenido(a), ${email}! Conectado como suscriptor activo`;
             } else {
-                campoTexto.innerHTML = `✓ Conectado como suscriptor activo de Radio Conexión`;
+                campoTexto.textContent = `✓ Conectado como suscriptor activo de Radio Conexión`;
             }
 
             document.getElementById("portal-login").classList.add("seccion-oculta");
@@ -539,11 +500,11 @@
             localStorage.removeItem("usuario_radio_conexion");
             localStorage.removeItem("usuario_nombre");
             localStorage.removeItem("usuario_apellido");
-            
+
             document.getElementById("portal-abierto").classList.add("seccion-oculta");
             document.getElementById("portal-login").classList.remove("seccion-oculta");
             document.getElementById("email-privado-input").value = "";
-            
+
             document.getElementById('rc-step-selection').style.display = 'block';
             document.getElementById('rc-music-desc').style.display = 'block';
             document.getElementById('rc-music-success-message').style.display = 'none';
@@ -555,8 +516,6 @@
             document.getElementById('rc-msg-success-box').style.display = 'none';
             document.getElementById('rc-txt-mensaje').value = '';
 
-            document.getElementById('poll-options').style.display = 'flex';
-            document.getElementById('poll-thanks').style.display = 'none';
         }
 
         const menuToggleBtn = document.getElementById('menu-toggle');
@@ -594,10 +553,8 @@
             themeBtn.innerText = '☀️';
         }
     </script>
-
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 900, once: false, mirror: true, easing: 'ease-out-back' });
+
     </script>
 </body>
 </html>

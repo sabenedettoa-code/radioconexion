@@ -5,34 +5,15 @@
   "display": "standalone",
   "name": "Radio Conexión - Conectados Con Tus Sentidos",
   "orientation": "any",
-  "scope": "/",
+  "scope": "./",
   "short_name": "Radio Conexión",
-  "start_url": "/",
+  "start_url": "./",
   "theme_color": "#c77f0d",
   "icons": [
     {
-      "src": "https://www.dropbox.com/scl/fi/7h2pubomnn102d1rap4dr/Sin-Texto-versi-n-3D.png?rlkey=nd66shyykgea25m8c6sl2pp5d&amp;st=dg874wjl&amp;raw=1",
+      "src": "https://www.dropbox.com/scl/fi/7h2pubomnn102d1rap4dr/Sin-Texto-versi-n-3D.png?rlkey=nd66shyykgea25m8c6sl2pp5d&st=dg874wjl&raw=1",
       "type": "image/png",
-      "sizes": "1024x1024",
-      "isSquare": true,
-      "isPng": true,
-      "isWebp": false,
-      "isJpg": false,
-      "width": 1024,
-      "is512x512": false,
-      "is256x256": false,
-      "is192x192": false
-    },
-    {
-      "src": "https://lh3.googleusercontent.com/sitesv/AA5AbUDMLfl1FN_qeKhwHSTiP-3MEvxltPX9lkIb2MnABBH3yBSGCfvN0QhAY0RLtW1A-efTau9H8n1y8aOH57s8X5yfyWdosvMflFPeA_KyR8a-kYgsJTHNEwwItj9rS7nESRdITnQKLQOmFwoqpsshuupajfaLd-7iQbg1YfG8Ik8LfaiJo_WFpB9s6kTqkFQ=w16383",
-      "isSquare": false,
-      "isPng": false,
-      "isWebp": false,
-      "isJpg": false,
-      "width": 0,
-      "is512x512": false,
-      "is256x256": false,
-      "is192x192": false
+      "sizes": "1024x1024"
     }
   ]
 }
