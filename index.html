@@ -375,8 +375,8 @@
         } catch(e) {}
     </script>
     <style>html.rc-dark-preload body{background:#101216!important}</style>
-    <meta name="description" content="Periodismo positivo, historias que inspiran y música. Escucha Radio Conexión y forma parte de nuestra comunidad.">
-    <meta property="og:description" content="Periodismo positivo, historias que inspiran y música. Escucha Radio Conexión y forma parte de nuestra comunidad.">
+    <meta name="description" content="Periodismo positivo, historias que inspiran y música. Escucha Radio Conexión y suscríbete a nuestro boletín.">
+    <meta property="og:description" content="Periodismo positivo, historias que inspiran y música. Escucha Radio Conexión y suscríbete a nuestro boletín.">
     <link rel="stylesheet" href="site.css">
     <link rel="manifest" href="manifest.json">
     <script src="site.js" defer></script>
@@ -410,7 +410,7 @@
 
     <main class="container" id="contenido" tabindex="-1">
         <section class="welcome-section">
-            <div class="hero-copy"><span class="eyebrow">RADIO CONEXIÓN · PERIODISMO POSITIVO</span><h1>Conectados<br>con tus <em>sentidos.</em></h1><p class="hero-intro">Historias que inspiran. Música que acompaña.<br>Un espacio para conectar con el lado bueno del mundo.</p><div class="hero-actions"><a class="btn-custom" href="episodios.html">Escuchar episodios <span aria-hidden="true">↗</span></a><a class="hero-secondary" href="#subscription-form">Quiero ser parte <span aria-hidden="true">→</span></a></div><p class="hero-note">Tu próxima buena noticia empieza aquí.</p></div>
+            <div class="hero-copy"><span class="eyebrow">RADIO CONEXIÓN · PERIODISMO POSITIVO</span><h1>Conectados<br>con tus <em>sentidos.</em></h1><p class="hero-intro">Historias que inspiran. Música que acompaña.<br>Un espacio para conectar con el lado bueno del mundo.</p><div class="hero-actions"><a class="btn-custom" href="episodios.html">Escuchar episodios <span aria-hidden="true">↗</span></a><a class="hero-secondary" href="#subscription-form">Recibir el boletín <span aria-hidden="true">→</span></a></div><p class="hero-note">Tu próxima buena noticia empieza aquí.</p></div>
 
             <div class="profile-card">
                 <div class="avatar-container">
@@ -442,98 +442,14 @@
 
         <section class="subscription-section" id="subscription-form">
             <div class="subscription-box">
-                <h2>Suscríbete a Radio Conexión</h2>
-                <p>Sé el primero en enterarte de nuevos episodios, anuncios oficiales, noticias que inspiran y pide tus canciones favoritas.</p>
-                <form class="form-group" id="radio-subscription-form">
-                    <div class="form-row">
-                        <input type="text" name="nombre" aria-label="Nombre" autocomplete="given-name" placeholder="Nombre" required style="width: 50%;">
-                        <input type="text" name="apellido" aria-label="Apellido" autocomplete="family-name" placeholder="Apellido" required style="width: 50%;">
-                    </div>
-                    <input type="email" name="email" aria-label="Correo electrónico" autocomplete="email" placeholder="Correo electrónico" required>
-
-                    <div class="privacy-row">
-                        <input type="checkbox" required id="privacy">
-                        <label for="privacy">Acepto los <a href="https://docs.google.com/document/d/1lDV4lXvJRvKY-jV-HnYbBzAtuWayx_yOnCAoZhyC7Lw/edit?usp=sharing" target="_blank" class="privacy-link" rel="noopener noreferrer">Términos y Condiciones de Uso</a> de Radio Conexión y consiento el tratamiento de mis datos bajo la Ley 19.628.</label>
-                    </div>
-                    <button type="submit" class="btn-custom" id="submit-btn" style="border: none; cursor: pointer; width: 100%;">Suscribirme</button>
-
-                    <div id="success-message" role="status" style="display: none; margin-top: 15px; padding: 12px; background-color: #e6f4ea; color: #137333; border-radius: 8px; font-weight: 600; text-align: center; border: 1px solid #ceead6; font-family: 'Inter', sans-serif;">
-                        ¡Gracias por conectarte! Te has suscrito correctamente.
-                        <p></p>
-                       📨 Te hemos enviado un correo de bienvenida con toda la información que tienes que saber.
-                    </div>
-
-                    <div id="error-message" role="alert" style="display: none; margin-top: 15px; padding: 12px; background-color: #fce8e6; color: #c5221f; border-radius: 8px; font-weight: 600; text-align: center; border: 1px solid #fad2cf; font-family: 'Inter', sans-serif;">
-                        Este correo electrónico ya se encuentra registrado en nuestra comunidad. ¡Gracias por formar parte de Radio Conexión!
-                    </div>
-                </form>
-
-                <script>
-                    document.getElementById('radio-subscription-form').addEventListener('submit', function(e) {
-                        e.preventDefault();
-                        const form = this;
-                        const button = document.getElementById('submit-btn');
-                        const successMessage = document.getElementById('success-message');
-                        const errorMessage = document.getElementById('error-message');
-
-                        successMessage.style.display = 'none';
-                        errorMessage.style.display = 'none';
-                        button.disabled = true;
-                        button.innerText = 'Procesando...';
-
-                        const urlEncodedData = new URLSearchParams(new FormData(form)).toString();
-
-                        fetch('https://script.google.com/macros/s/AKfycbxZ0qhA_ksJIOE_aVV-8pfUpl-IXJXd7HQzkYW7YyXUnzREcEU0kzMolXWoizxF93X1/exec', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                            body: urlEncodedData
-                        })
-                        .then(response => {
-                            if (!response.ok) throw new Error('Error de servidor');
-                            return response.json();
-                        })
-                        .then(data => {
-                            if (!data || !['success', 'already_exists'].includes(data.result)) throw new Error('Respuesta no confirmada');
-                            button.disabled = false;
-                            button.innerText = 'Suscribirme';
-
-                            form.querySelector('.form-row').style.display = 'none';
-                            form.querySelector('input[type="email"]').style.display = 'none';
-                            form.querySelector('.privacy-row').style.display = 'none';
-                            button.style.display = 'none';
-
-                            const linkCarpeta = 'https://drive.google.com/drive/folders/1IBhmKNoRWbFchAWPRr_tiHGqgczcGu1Y?usp=drive_link';
-
-                            if (data.result === 'already_exists') {
-                                errorMessage.innerHTML = 'Este correo electrónico ya se encuentra registrado en nuestra comunidad. ¡Gracias por formar parte de Radio Conexión! <br><br>' +
-                                    '<a href="' + linkCarpeta + '" target="_blank" class="btn-custom" style="margin-top: 10px; display: inline-block; width: 100%; text-align: center; border: none; cursor: pointer; text-decoration: none;" rel="noopener noreferrer">📁 Acceder a la Carpeta de Episodios</a>';
-                                errorMessage.style.display = 'block';
-                            } else {
-                                successMessage.innerHTML = '¡Gracias por conectarte! Te has suscrito correctamente. <p></p>' +
-                                    '📨 Te hemos enviado un correo de bienvenida con toda la información que tienes que saber.<br><br>' +
-                                    '<a href="' + linkCarpeta + '" target="_blank" class="btn-custom" style="margin-top: 10px; display: inline-block; width: 100%; text-align: center; border: none; cursor: pointer; text-decoration: none;" rel="noopener noreferrer">📁 Acceder a la Carpeta de Episodios</a>';
-                                successMessage.style.display = 'block';
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Error:', error);
-                            button.disabled = false;
-                            button.innerText = 'Suscribirme';
-                            errorMessage.textContent = 'No pudimos confirmar tu suscripción. Revisa si recibiste el correo de bienvenida antes de volver a intentarlo.';
-                            errorMessage.style.display = 'block';
-                        });
-                    });
-                </script>
+                <h2>Recibe el boletín de Radio Conexión</h2>
+                <p>Las noticias relevantes para comenzar, continuar o cerrar tu jornada, directamente en tu correo.</p>
+                <a class="btn-custom" href="mailto:boletin+subscribe@radioconexionweb.com?subject=Quiero%20suscribirme%20al%20bolet%C3%ADn">SUSCRIBIRME AL BOLETÍN</a>
+                <p style="margin-top: 16px; font-size: 0.9rem;">Al pulsar el botón se abrirá tu correo. Envía el mensaje y confirma la solicitud que recibirás de Google Groups.</p>
             </div>
         </section>
-
-        <section class="whatsapp-section">
-            <h2>Radio Conexión en WhatsApp 🤳</h2>
-            <p>Únete a los grupos de la Comunidad de Radio Conexión en WhatsApp, y sé parte de una experiencia única de información y entretenimiento al instante.</p>
-            <a class="btn-custom" href="https://chat.whatsapp.com/GUdqMpy1OGd3mPvrGaleX5" target="_blank" rel="noopener noreferrer">UNIRME AL WHATSAPP</a>
-        </section>
     </main>
-    <footer class="site-footer"><a href="inicio.html">Radio Conexión</a><p>Conectados con tus sentidos.</p><a href="historia.html">Nuestra historia</a><span aria-hidden="true"> · </span><a href="inicio.html#subscription-form">Únete a la comunidad</a></footer>
+    <footer class="site-footer"><a href="inicio.html">Radio Conexión</a><p>Conectados con tus sentidos.</p><a href="historia.html">Nuestra historia</a><span aria-hidden="true"> · </span><a href="inicio.html#subscription-form">Recibe el boletín</a></footer>
 
     <div id="sticky-audio-player" class="sticky-player-bar">
         <div class="player-info">
