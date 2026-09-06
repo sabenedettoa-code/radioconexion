@@ -619,24 +619,46 @@
 
     <main class="container" id="contenido" tabindex="-1">
         <section class="page-title-section">
-            <h1>Noticias de Última Hora</h1>
-            <p>Sigue los principales titulares de actualidad. La portada se actualiza automáticamente con Google News.</p>
+            <h1>Noticias seleccionadas</h1>
+            <p>Una selección editorial de Radio Conexión para cerrar la semana, con información de fuentes directas.</p>
 
-            <div class="news-toolbar" aria-live="polite">
+            <div class="news-toolbar">
                 <div class="news-status-wrap">
-                    <span id="news-live-dot" class="news-live-dot loading" aria-hidden="true"></span>
-                    <div id="news-status" class="news-status">
-                        <strong>Actualizando noticias…</strong><br>
-                        Buscando los titulares más recientes.
+                    <span class="news-live-dot" aria-hidden="true"></span>
+                    <div class="news-status">
+                        <strong>Selección de Radio Conexión</strong><br>
+                        Actualizada el 6 de septiembre de 2026.
                     </div>
                 </div>
-                <button type="button" id="news-refresh" class="news-refresh-btn">↻ Actualizar ahora</button>
             </div>
 
-            <div id="news-feed" class="news-grid" aria-busy="true">
-                <div class="news-card news-skeleton" aria-hidden="true"></div>
-                <div class="news-card news-skeleton" aria-hidden="true"></div>
-                <div class="news-card news-skeleton" aria-hidden="true"></div>
+            <div class="news-grid">
+                <article class="news-card">
+                    <div>
+                        <span class="news-source">● MINISTERIO DE SALUD</span>
+                        <h2>Circulación de virus respiratorios alcanza su nivel más alto en tres años</h2>
+                        <p class="news-summary">La positividad de las muestras llegó al 57,9%, mientras aumentaron las hospitalizaciones y las atenciones respiratorias en la población infantil.</p>
+                    </div>
+                    <a class="btn-custom" href="https://www.minsal.cl/reporte-semanal-campana-de-invierno-2026-positividad-alcanza-un-579-en-la-se-34-la-mas-alta-registrada-en-los-ultimos-tres-anos/" target="_blank" rel="noopener noreferrer">Leer noticia</a>
+                </article>
+
+                <article class="news-card">
+                    <div>
+                        <span class="news-source">● BIOBIOCHILE</span>
+                        <h2>Estudiantes chilenos convierten plumavit residual en material de construcción</h2>
+                        <p class="news-summary">Alumnos de la PUCV desarrollaron un fragüe técnico con plumavit reciclado, caucho y polvo de hormigón, pensado para resistir sismos y humedad.</p>
+                    </div>
+                    <a class="btn-custom" href="https://www.biobiochile.cl/noticias/ciencia-y-tecnologia/ciencia/2026/09/04/estudiantes-chilenos-logran-transformar-el-plumavit-residual-en-importante-material-de-construccion.shtml" target="_blank" rel="noopener noreferrer">Leer noticia</a>
+                </article>
+
+                <article class="news-card">
+                    <div>
+                        <span class="news-source">● BIOBIOCHILE</span>
+                        <h2>El Desierto Florido podría alcanzar una intensidad no vista desde 1997</h2>
+                        <p class="news-summary">Las lluvias activaron semillas y bulbos en Atacama y Coquimbo. La floración comenzaría en septiembre y alcanzaría su punto máximo durante octubre.</p>
+                    </div>
+                    <a class="btn-custom" href="https://www.biobiochile.cl/noticias/ciencia-y-tecnologia/medio-ambiente-cyt/2026/09/06/desierto-florido-podria-repetirse-con-una-intensidad-no-vista-desde-1997.shtml" target="_blank" rel="noopener noreferrer">Leer noticia</a>
+                </article>
             </div>
         </section>
     </main>
@@ -660,33 +682,6 @@
             var menuButton = document.getElementById("menu-toggle");
             var navMenu = document.getElementById("nav-menu");
             var themeButton = document.getElementById("dark-mode-toggle");
-            var newsContainer = document.getElementById("news-feed");
-            var newsStatus = document.getElementById("news-status");
-            var newsDot = document.getElementById("news-live-dot");
-            var newsRefreshButton = document.getElementById("news-refresh");
-
-            var GOOGLE_NEWS_RSS = "https://news.google.com/rss?hl=es-419&gl=CL&ceid=CL:es-419";
-            var NEWS_REFRESH_MS = 10 * 60 * 1000;
-            var lastSuccessfulLoad = 0;
-            var loadingNews = false;
-
-            var backupNews = [
-                {
-                    title: "Revisa los principales titulares de Chile y el mundo en Google News",
-                    source: "Google News",
-                    link: "https://news.google.com/?hl=es-419&gl=CL&ceid=CL:es-419"
-                },
-                {
-                    title: "La portada se volverá a actualizar automáticamente en unos minutos",
-                    source: "Radio Conexión",
-                    link: "https://news.google.com/?hl=es-419&gl=CL&ceid=CL:es-419"
-                },
-                {
-                    title: "También puedes usar Actualizar ahora para intentar una nueva carga",
-                    source: "Radio Conexión",
-                    link: "https://news.google.com/?hl=es-419&gl=CL&ceid=CL:es-419"
-                }
-            ];
 
             function setMenuState(open) {
                 if (!menuButton || !navMenu) {
@@ -756,321 +751,6 @@
                 });
             }
 
-            function cleanText(html) {
-                var parser = new DOMParser();
-                var documentObject = parser.parseFromString(String(html || ""), "text/html");
-                var text = documentObject.body.textContent || "";
-                return text.replace(/\s+/g, " ").trim();
-            }
-
-            function formatDate(value) {
-                var date;
-                if (!value) {
-                    return "";
-                }
-                date = new Date(value);
-                if (isNaN(date.getTime())) {
-                    return "";
-                }
-                return date.toLocaleString("es-CL", {
-                    day: "2-digit",
-                    month: "short",
-                    hour: "2-digit",
-                    minute: "2-digit"
-                });
-            }
-
-            function splitSource(title, source) {
-                var parts;
-                if (source) {
-                    return {
-                        title: String(title || "").trim(),
-                        source: String(source).trim()
-                    };
-                }
-                parts = String(title || "").split(" - ");
-                if (parts.length > 1) {
-                    return {
-                        title: parts.slice(0, parts.length - 1).join(" - ").trim(),
-                        source: parts[parts.length - 1].trim()
-                    };
-                }
-                return {
-                    title: String(title || "").trim(),
-                    source: "Google News"
-                };
-            }
-
-            function renderNews(items) {
-                var limit;
-                var i;
-                var item;
-                var info;
-                var article;
-                var top;
-                var source;
-                var heading;
-                var summary;
-                var link;
-
-                if (!newsContainer) {
-                    return;
-                }
-
-                newsContainer.innerHTML = "";
-                limit = Math.min(items.length, 12);
-
-                for (i = 0; i < limit; i += 1) {
-                    item = items[i];
-                    info = splitSource(item.title, item.source);
-
-                    article = document.createElement("article");
-                    article.className = "news-card";
-
-                    top = document.createElement("div");
-
-                    source = document.createElement("span");
-                    source.className = "news-source";
-                    source.textContent = "● " + (info.source || "Google News") + (item.date ? " · " + item.date : "");
-
-                    heading = document.createElement("h2");
-                    heading.textContent = info.title || "Noticia sin título";
-
-                    top.appendChild(source);
-                    top.appendChild(heading);
-
-                    if (item.summary) {
-                        summary = document.createElement("p");
-                        summary.className = "news-summary";
-                        summary.textContent = cleanText(item.summary);
-                        top.appendChild(summary);
-                    }
-
-                    link = document.createElement("a");
-                    link.href = item.link || "https://news.google.com/";
-                    link.target = "_blank";
-                    link.rel = "noopener noreferrer";
-                    link.className = "btn-custom";
-                    link.textContent = "Leer noticia";
-
-                    article.appendChild(top);
-                    article.appendChild(link);
-                    newsContainer.appendChild(article);
-                }
-
-                newsContainer.setAttribute("aria-busy", "false");
-            }
-
-            function showStatus(type, title, detail) {
-                var strong;
-                if (!newsStatus || !newsDot) {
-                    return;
-                }
-
-                newsDot.className = "news-live-dot" + (type ? " " + type : "");
-                newsStatus.innerHTML = "";
-
-                strong = document.createElement("strong");
-                strong.textContent = title;
-                newsStatus.appendChild(strong);
-
-                if (detail) {
-                    newsStatus.appendChild(document.createElement("br"));
-                    newsStatus.appendChild(document.createTextNode(detail));
-                }
-            }
-
-            function getNewsFromRss2Json() {
-                return new Promise(function (resolve, reject) {
-                    var callbackName = "radioConexionNewsCallback_" + Date.now() + "_" + Math.floor(Math.random() * 100000);
-                    var script = document.createElement("script");
-                    var timeoutId;
-                    var url;
-
-                    function cleanup() {
-                        if (timeoutId) {
-                            window.clearTimeout(timeoutId);
-                        }
-                        if (script.parentNode) {
-                            script.parentNode.removeChild(script);
-                        }
-                        try {
-                            delete window[callbackName];
-                        } catch (e) {
-                            window[callbackName] = undefined;
-                        }
-                    }
-
-                    window[callbackName] = function (data) {
-                        var results = [];
-                        var i;
-                        var item;
-
-                        cleanup();
-
-                        if (!data || data.status !== "ok" || !data.items || !data.items.length) {
-                            reject(new Error("RSS2JSON no devolvió noticias"));
-                            return;
-                        }
-
-                        for (i = 0; i < data.items.length; i += 1) {
-                            item = data.items[i];
-                            results.push({
-                                title: item.title || "",
-                                source: item.author || "",
-                                link: item.link || "https://news.google.com/",
-                                date: formatDate(item.pubDate),
-                                summary: item.description || ""
-                            });
-                        }
-
-                        resolve(results);
-                    };
-
-                    script.onerror = function () {
-                        cleanup();
-                        reject(new Error("No fue posible conectar con RSS2JSON"));
-                    };
-
-                    timeoutId = window.setTimeout(function () {
-                        cleanup();
-                        reject(new Error("RSS2JSON tardó demasiado en responder"));
-                    }, 12000);
-
-                    url = "https://api.rss2json.com/v1/api.json"
-                        + "?rss_url=" + encodeURIComponent(GOOGLE_NEWS_RSS)
-                        + "&callback=" + encodeURIComponent(callbackName)
-                        + "&_=" + Date.now();
-
-                    script.src = url;
-                    script.async = true;
-                    document.head.appendChild(script);
-                });
-            }
-
-            function getNewsFromAllOrigins() {
-                var proxyUrl = "https://api.allorigins.win/raw?url=" + encodeURIComponent(GOOGLE_NEWS_RSS) + "&_=" + Date.now();
-
-                return fetch(proxyUrl, { cache: "no-store" })
-                    .then(function (response) {
-                        if (!response.ok) {
-                            throw new Error("Proxy RSS no disponible");
-                        }
-                        return response.text();
-                    })
-                    .then(function (xmlText) {
-                        var parser = new DOMParser();
-                        var xml = parser.parseFromString(xmlText, "application/xml");
-                        var parserError = xml.querySelector("parsererror");
-                        var nodes;
-                        var results;
-                        var i;
-                        var node;
-                        var titleNode;
-                        var sourceNode;
-                        var linkNode;
-                        var dateNode;
-                        var descriptionNode;
-
-                        if (parserError) {
-                            throw new Error("RSS inválido");
-                        }
-
-                        nodes = xml.querySelectorAll("item");
-                        if (!nodes.length) {
-                            throw new Error("RSS vacío");
-                        }
-
-                        results = [];
-                        for (i = 0; i < nodes.length; i += 1) {
-                            node = nodes[i];
-                            titleNode = node.querySelector("title");
-                            sourceNode = node.querySelector("source");
-                            linkNode = node.querySelector("link");
-                            dateNode = node.querySelector("pubDate");
-                            descriptionNode = node.querySelector("description");
-
-                            results.push({
-                                title: titleNode ? titleNode.textContent : "",
-                                source: sourceNode ? sourceNode.textContent : "",
-                                link: linkNode ? linkNode.textContent : "https://news.google.com/",
-                                date: formatDate(dateNode ? dateNode.textContent : ""),
-                                summary: descriptionNode ? descriptionNode.textContent : ""
-                            });
-                        }
-
-                        return results;
-                    });
-            }
-
-            function updateNews(manual) {
-                if (loadingNews) {
-                    return;
-                }
-
-                loadingNews = true;
-                if (newsRefreshButton) {
-                    newsRefreshButton.disabled = true;
-                }
-                if (newsContainer) {
-                    newsContainer.setAttribute("aria-busy", "true");
-                }
-
-                showStatus(
-                    "loading",
-                    manual ? "Actualizando ahora…" : "Actualizando noticias…",
-                    "Consultando los titulares más recientes."
-                );
-
-                getNewsFromRss2Json()
-                    .catch(function () {
-                        return getNewsFromAllOrigins();
-                    })
-                    .then(function (items) {
-                        var time;
-                        renderNews(items);
-                        lastSuccessfulLoad = Date.now();
-                        time = new Date().toLocaleTimeString("es-CL", {
-                            hour: "2-digit",
-                            minute: "2-digit"
-                        });
-                        showStatus("", "Noticias al día", "Última actualización: " + time + " · Se actualizan cada 10 minutos.");
-                    })
-                    .catch(function (error) {
-                        if (!lastSuccessfulLoad) {
-                            renderNews(backupNews);
-                        }
-                        showStatus(
-                            "error",
-                            "No fue posible actualizar en este momento",
-                            "Se muestra el respaldo disponible. La página volverá a intentarlo automáticamente."
-                        );
-                        console.warn("Radio Conexión: no se pudo actualizar Google News.", error);
-                    })
-                    .finally(function () {
-                        loadingNews = false;
-                        if (newsRefreshButton) {
-                            newsRefreshButton.disabled = false;
-                        }
-                    });
-            }
-
-            if (newsRefreshButton) {
-                newsRefreshButton.addEventListener("click", function () {
-                    updateNews(true);
-                });
-            }
-
-            updateNews(false);
-            window.setInterval(function () {
-                updateNews(false);
-            }, NEWS_REFRESH_MS);
-
-            document.addEventListener("visibilitychange", function () {
-                if (!document.hidden && Date.now() - lastSuccessfulLoad > 5 * 60 * 1000) {
-                    updateNews(false);
-                }
-            });
         }());
     </script>
 </body>
