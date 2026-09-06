@@ -627,13 +627,13 @@
                     <span class="news-live-dot" aria-hidden="true"></span>
                     <div class="news-status">
                         <strong>Selección de Radio Conexión</strong><br>
-                        Actualizada el 6 de septiembre de 2026.
+                        Actualizada el 6 de septiembre de 2026 · Las noticias se retiran después de 14 días.
                     </div>
                 </div>
             </div>
 
             <div class="news-grid">
-                <article class="news-card">
+                <article class="news-card" data-published="2026-09-03">
                     <div>
                         <span class="news-source">● MINISTERIO DE SALUD</span>
                         <h2>Circulación de virus respiratorios alcanza su nivel más alto en tres años</h2>
@@ -642,7 +642,7 @@
                     <a class="btn-custom" href="https://www.minsal.cl/reporte-semanal-campana-de-invierno-2026-positividad-alcanza-un-579-en-la-se-34-la-mas-alta-registrada-en-los-ultimos-tres-anos/" target="_blank" rel="noopener noreferrer">Leer noticia</a>
                 </article>
 
-                <article class="news-card">
+                <article class="news-card" data-published="2026-09-04">
                     <div>
                         <span class="news-source">● BIOBIOCHILE</span>
                         <h2>Estudiantes chilenos convierten plumavit residual en material de construcción</h2>
@@ -651,7 +651,7 @@
                     <a class="btn-custom" href="https://www.biobiochile.cl/noticias/ciencia-y-tecnologia/ciencia/2026/09/04/estudiantes-chilenos-logran-transformar-el-plumavit-residual-en-importante-material-de-construccion.shtml" target="_blank" rel="noopener noreferrer">Leer noticia</a>
                 </article>
 
-                <article class="news-card">
+                <article class="news-card" data-published="2026-09-06">
                     <div>
                         <span class="news-source">● BIOBIOCHILE</span>
                         <h2>El Desierto Florido podría alcanzar una intensidad no vista desde 1997</h2>
@@ -660,7 +660,7 @@
                     <a class="btn-custom" href="https://www.biobiochile.cl/noticias/ciencia-y-tecnologia/medio-ambiente-cyt/2026/09/06/desierto-florido-podria-repetirse-con-una-intensidad-no-vista-desde-1997.shtml" target="_blank" rel="noopener noreferrer">Leer noticia</a>
                 </article>
 
-                <article class="news-card">
+                <article class="news-card" data-published="2026-09-02">
                     <div>
                         <span class="news-source">● MINISTERIO DE SALUD</span>
                         <h2>Salud impulsa siete proyectos para modernizar la atención</h2>
@@ -669,7 +669,7 @@
                     <a class="btn-custom" href="https://www.minsal.cl/minsal-inicia-nueva-etapa-de-transformacion-digital-con-siete-proyectos-estrategicos-para-modernizar-la-atencion-de-salud/" target="_blank" rel="noopener noreferrer">Leer noticia</a>
                 </article>
 
-                <article class="news-card">
+                <article class="news-card" data-published="2026-09-02">
                     <div>
                         <span class="news-source">● BIOBIOCHILE</span>
                         <h2>Fotógrafo chileno gana el Gran Premio de los Audubon Photography Awards</h2>
@@ -678,7 +678,7 @@
                     <a class="btn-custom" href="https://www.biobiochile.cl/noticias/sociedad/animales/2026/09/02/chileno-obtiene-el-gran-premio-de-los-audubon-photography-awards-por-foto-de-imponente-buho.shtml" target="_blank" rel="noopener noreferrer">Leer noticia</a>
                 </article>
 
-                <article class="news-card">
+                <article class="news-card" data-published="2026-09-05">
                     <div>
                         <span class="news-source">● PREMIO AVONNI</span>
                         <h2>Premio Nacional de Innovación Avonni anuncia 36 finalistas</h2>
@@ -777,6 +777,23 @@
                     }
                 });
             }
+
+            function retirarNoticiasAntiguas() {
+                var limite = 14 * 24 * 60 * 60 * 1000;
+                var ahora = new Date();
+                var tarjetas = document.querySelectorAll(".news-card[data-published]");
+
+                tarjetas.forEach(function (tarjeta) {
+                    var partes = tarjeta.getAttribute("data-published").split("-");
+                    var fecha = new Date(Number(partes[0]), Number(partes[1]) - 1, Number(partes[2]));
+
+                    if (ahora.getTime() - fecha.getTime() > limite) {
+                        tarjeta.remove();
+                    }
+                });
+            }
+
+            retirarNoticiasAntiguas();
 
         }());
     </script>
