@@ -20,4 +20,4 @@ El acceso existente del portal usa almacenamiento del navegador. La autorizació
 
 ## Cambios de esta revisión
 
-Portada renovada con los colores de la marca, accesos directos, ajustes para móviles y modo oscuro, navegación con teclado, etiquetas accesibles, portada raíz y mensajes de suscripción que no anuncian éxito ante una respuesta desconocida. Se eliminó la encuesta, el envío de votos y sus referencias al cerrar sesión. Se retiró la dependencia de animaciones AOS para que el contenido permanezca visible si falla un servicio externo.
+Portada renovada con los colores de la marca, accesos directos, ajustes para móviles y modo oscuro, navegación con teclado, etiquetas accesibles, portada raíz y mensajes de suscripción que no anuncian éxito ante una respuesta desconocida. La zona de suscriptores presenta mejor sus beneficios, organiza las acciones en un panel adaptable y ya no concede acceso si falla la verificación externa. Se eliminó la encuesta, el envío de votos y sus referencias al cerrar sesión. Se retiró la dependencia de animaciones AOS para que el contenido permanezca visible si falla un servicio externo.
