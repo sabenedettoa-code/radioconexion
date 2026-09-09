@@ -357,17 +357,6 @@
             box-shadow: 0 8px 22px rgba(199, 127, 13, 0.20);
         }
 
-        .news-dialog { width: min(calc(100% - 28px), 780px); max-height: min(760px, calc(100% - 28px)); padding: 0; border: 0; border-radius: 22px; color: var(--ink); background: var(--card); box-shadow: 0 28px 80px rgba(0, 0, 0, 0.28); }
-        .news-dialog::backdrop { background: rgba(16, 18, 22, 0.68); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); }
-        .news-dialog-content { max-height: min(760px, calc(100vh - 28px)); overflow-y: auto; padding: clamp(24px, 5vw, 48px); }
-        .news-dialog-close { float: right; display: grid; place-items: center; width: 38px; height: 38px; border: 1px solid var(--border); border-radius: 50%; color: #575d63; background: transparent; font-size: 23px; cursor: pointer; }
-        .news-dialog-source { display: block; margin: 12px 48px 12px 0; color: #c77f0d; font-size: 12px; font-weight: 700; letter-spacing: 0.03em; }
-        .news-dialog h2 { margin-bottom: 18px; font-family: "Unica One", sans-serif; color: #a96500; font-size: clamp(1.7rem, 4vw, 2.45rem); line-height: 1.16; }
-        .news-dialog-summary { margin-bottom: 22px; color: #50565c; font-size: 1.04rem; font-weight: 600; line-height: 1.6; }
-        .news-dialog-body p { margin: 0 0 16px; color: #34383d; font-size: 1rem; line-height: 1.75; }
-        .news-dialog-footer { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--border); }
-        .news-dialog-footer small { color: #6b7177; }
-
         .news-skeleton {
             min-height: 185px;
             background: linear-gradient(100deg, #ffffff 30%, #f3f4f6 50%, #ffffff 70%);
@@ -482,13 +471,9 @@
         }
 
         body.dark-mode .news-status strong,
-        body.dark-mode .news-card h2,
-        body.dark-mode .news-dialog-body p {
+        body.dark-mode .news-card h2 {
             color: #f5f7f8;
         }
-
-        body.dark-mode .news-dialog, body.dark-mode .news-dialog-close { border-color: rgba(255, 255, 255, 0.12); background: #191c21; }
-        body.dark-mode .news-dialog-summary, body.dark-mode .news-dialog-footer small { color: #b8bdc3; }
 
         body.dark-mode .news-refresh-btn {
             border-color: rgba(229, 169, 25, 0.28);
@@ -654,7 +639,7 @@
                         <h2>Circulación de virus respiratorios alcanza su nivel más alto en tres años</h2>
                         <p class="news-summary">La positividad de las muestras llegó al 57,9%, mientras aumentaron las hospitalizaciones y las atenciones respiratorias en la población infantil.</p>
                     </div>
-                    <button type="button" class="btn-custom read-news-btn" data-news-id="virus-respiratorios">Leer noticia completa</button>
+                    <a class="btn-custom" href="https://www.minsal.cl/reporte-semanal-campana-de-invierno-2026-positividad-alcanza-un-579-en-la-se-34-la-mas-alta-registrada-en-los-ultimos-tres-anos/" target="_blank" rel="noopener noreferrer">Leer noticia</a>
                 </article>
 
                 <article class="news-card" data-published="2026-09-04">
@@ -663,7 +648,7 @@
                         <h2>Estudiantes chilenos convierten plumavit residual en material de construcción</h2>
                         <p class="news-summary">Alumnos de la PUCV desarrollaron un fragüe técnico con plumavit reciclado, caucho y polvo de hormigón, pensado para resistir sismos y humedad.</p>
                     </div>
-                    <button type="button" class="btn-custom read-news-btn" data-news-id="plumavit">Leer noticia completa</button>
+                    <a class="btn-custom" href="https://www.biobiochile.cl/noticias/ciencia-y-tecnologia/ciencia/2026/09/04/estudiantes-chilenos-logran-transformar-el-plumavit-residual-en-importante-material-de-construccion.shtml" target="_blank" rel="noopener noreferrer">Leer noticia</a>
                 </article>
 
                 <article class="news-card" data-published="2026-09-06">
@@ -672,7 +657,7 @@
                         <h2>El Desierto Florido podría alcanzar una intensidad no vista desde 1997</h2>
                         <p class="news-summary">Las lluvias activaron semillas y bulbos en Atacama y Coquimbo. La floración comenzaría en septiembre y alcanzaría su punto máximo durante octubre.</p>
                     </div>
-                    <button type="button" class="btn-custom read-news-btn" data-news-id="desierto-florido">Leer noticia completa</button>
+                    <a class="btn-custom" href="https://www.biobiochile.cl/noticias/ciencia-y-tecnologia/medio-ambiente-cyt/2026/09/06/desierto-florido-podria-repetirse-con-una-intensidad-no-vista-desde-1997.shtml" target="_blank" rel="noopener noreferrer">Leer noticia</a>
                 </article>
 
                 <article class="news-card" data-published="2026-09-02">
@@ -681,7 +666,7 @@
                         <h2>Salud impulsa siete proyectos para modernizar la atención</h2>
                         <p class="news-summary">La hoja de ruta incluye receta digital, historia clínica compartida, apoyo tecnológico para listas de espera y un nuevo portal ciudadano de salud.</p>
                     </div>
-                    <button type="button" class="btn-custom read-news-btn" data-news-id="salud-digital">Leer noticia completa</button>
+                    <a class="btn-custom" href="https://www.minsal.cl/minsal-inicia-nueva-etapa-de-transformacion-digital-con-siete-proyectos-estrategicos-para-modernizar-la-atencion-de-salud/" target="_blank" rel="noopener noreferrer">Leer noticia</a>
                 </article>
 
                 <article class="news-card" data-published="2026-09-02">
@@ -690,7 +675,7 @@
                         <h2>Fotógrafo chileno gana el Gran Premio de los Audubon Photography Awards</h2>
                         <p class="news-summary">Francisco Castro fue reconocido por una imagen de un tucúquere captada en Paposo, Región de Antofagasta. El premio incluye US$5.000 y un viaje a la Antártica.</p>
                     </div>
-                    <button type="button" class="btn-custom read-news-btn" data-news-id="audubon">Leer noticia completa</button>
+                    <a class="btn-custom" href="https://www.biobiochile.cl/noticias/sociedad/animales/2026/09/02/chileno-obtiene-el-gran-premio-de-los-audubon-photography-awards-por-foto-de-imponente-buho.shtml" target="_blank" rel="noopener noreferrer">Leer noticia</a>
                 </article>
 
                 <article class="news-card" data-published="2026-09-05">
@@ -699,12 +684,11 @@
                         <h2>Premio Nacional de Innovación Avonni anuncia 36 finalistas</h2>
                         <p class="news-summary">La edición 2026 recibió más de 1.200 postulaciones: la mitad provino de regiones y el 42% correspondió a iniciativas lideradas por mujeres.</p>
                     </div>
-                    <button type="button" class="btn-custom read-news-btn" data-news-id="avonni">Leer noticia completa</button>
+                    <a class="btn-custom" href="https://www.tourinnovacion.cl/actualidad/con-record-de-postulaciones-el-premio-nacional-de-innovacion-avonni-anuncia-a-sus-finalistas-2026-en-el-ano-en-que-celebra-dos-decadas-impulsando-la-innovacion-en-chile/" target="_blank" rel="noopener noreferrer">Leer noticia</a>
                 </article>
             </div>
         </section>
     </main>
-    <dialog class="news-dialog" id="news-dialog" aria-labelledby="news-dialog-title"><div class="news-dialog-content"><button type="button" class="news-dialog-close" id="news-dialog-close" aria-label="Cerrar noticia">×</button><span class="news-dialog-source" id="news-dialog-source"></span><h2 id="news-dialog-title"></h2><p class="news-dialog-summary" id="news-dialog-summary"></p><div class="news-dialog-body" id="news-dialog-body"></div><div class="news-dialog-footer"><a class="btn-custom" id="news-dialog-source-link" href="#" target="_blank" rel="noopener noreferrer">Ver fuente original</a><small>Nota elaborada por Radio Conexión a partir de la fuente indicada.</small></div></div></dialog>
     <footer class="site-footer"><a href="inicio.html">Radio Conexión</a><p>Conectados con tus sentidos.</p><a href="historia.html">Nuestra historia</a><span aria-hidden="true"> · </span><a href="inicio.html#subscription-form">Recibe el boletín</a></footer>
 
     <div class="sticky-player-bar">
@@ -793,32 +777,6 @@
                     }
                 });
             }
-
-            var notas = {
-                "virus-respiratorios": ["El último reporte de la Campaña de Invierno informó una positividad de 57,9% durante la semana epidemiológica 34, el nivel más alto de los últimos tres años.", "El aumento coincide con más hospitalizaciones y consultas respiratorias, especialmente entre niños y niñas. La autoridad recomienda reconocer síntomas a tiempo y usar la red asistencial según la gravedad.", "https://www.minsal.cl/reporte-semanal-campana-de-invierno-2026-positividad-alcanza-un-579-en-la-se-34-la-mas-alta-registrada-en-los-ultimos-tres-anos/"],
-                "plumavit": ["Estudiantes de la PUCV desarrollaron un fragüe técnico que aprovecha plumavit residual, junto con caucho y polvo de hormigón.", "La propuesta busca responder a condiciones como sismos y humedad, y dar un nuevo valor a residuos de difícil gestión.", "https://www.biobiochile.cl/noticias/ciencia-y-tecnologia/ciencia/2026/09/04/estudiantes-chilenos-logran-transformar-el-plumavit-residual-en-importante-material-de-construccion.shtml"],
-                "desierto-florido": ["Las precipitaciones activaron semillas y bulbos en Atacama y Coquimbo, abriendo la posibilidad de una temporada especialmente intensa.", "La floración comenzaría en septiembre y alcanzaría su máximo en octubre. Las proyecciones apuntan a una intensidad no vista desde 1997.", "https://www.biobiochile.cl/noticias/ciencia-y-tecnologia/medio-ambiente-cyt/2026/09/06/desierto-florido-podria-repetirse-con-una-intensidad-no-vista-desde-1997.shtml"],
-                "salud-digital": ["El Ministerio de Salud inició siete proyectos estratégicos para modernizar la atención y facilitar la relación de las personas con la red de salud.", "La hoja de ruta considera receta digital, historia clínica compartida, apoyo a las listas de espera y un portal ciudadano.", "https://www.minsal.cl/minsal-inicia-nueva-etapa-de-transformacion-digital-con-siete-proyectos-estrategicos-para-modernizar-la-atencion-de-salud/"],
-                "audubon": ["El fotógrafo chileno Francisco Castro obtuvo el Gran Premio de los Audubon Photography Awards por una imagen de un tucúquere tomada en Paposo, Región de Antofagasta.", "El reconocimiento incluye US$5.000 y un viaje a la Antártica, y destaca el registro de fauna del norte de Chile.", "https://www.biobiochile.cl/noticias/sociedad/animales/2026/09/02/chileno-obtiene-el-gran-premio-de-los-audubon-photography-awards-por-foto-de-imponente-buho.shtml"],
-                "avonni": ["El Premio Nacional de Innovación Avonni anunció a sus 36 finalistas tras recibir más de 1.200 postulaciones en su edición 2026.", "La mitad de las iniciativas provino de regiones y el 42% corresponde a proyectos liderados por mujeres.", "https://www.tourinnovacion.cl/actualidad/con-record-de-postulaciones-el-premio-nacional-de-innovacion-avonni-anuncia-a-sus-finalistas-2026-en-el-ano-en-que-celebra-dos-decadas-impulsando-la-innovacion-en-chile/"]
-            };
-            var dialogo = document.getElementById("news-dialog"), cerrar = document.getElementById("news-dialog-close"), activador;
-            document.querySelectorAll(".read-news-btn").forEach(function (boton) {
-                boton.addEventListener("click", function () {
-                    var nota = notas[boton.getAttribute("data-news-id")], tarjeta = boton.closest(".news-card");
-                    if (!nota || !tarjeta) return;
-                    activador = boton;
-                    document.getElementById("news-dialog-source").textContent = tarjeta.querySelector(".news-source").textContent;
-                    document.getElementById("news-dialog-title").textContent = tarjeta.querySelector("h2").textContent;
-                    document.getElementById("news-dialog-summary").textContent = tarjeta.querySelector(".news-summary").textContent;
-                    var cuerpo = document.getElementById("news-dialog-body"); cuerpo.replaceChildren();
-                    nota.slice(0, 2).forEach(function (texto) { var p = document.createElement("p"); p.textContent = texto; cuerpo.appendChild(p); });
-                    document.getElementById("news-dialog-source-link").href = nota[2]; dialogo.showModal(); cerrar.focus();
-                });
-            });
-            cerrar.addEventListener("click", function () { dialogo.close(); });
-            dialogo.addEventListener("click", function (event) { if (event.target === dialogo) dialogo.close(); });
-            dialogo.addEventListener("close", function () { if (activador) activador.focus(); });
 
             function retirarNoticiasAntiguas() {
                 var limite = 14 * 24 * 60 * 60 * 1000;
